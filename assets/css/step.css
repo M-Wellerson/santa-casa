@@ -1,0 +1,114 @@
+#simulador {
+    background-image: url(../img/nuvens.png);
+    background-size: cover;
+}
+.full_step {
+    display: flex;
+    justify-content: center;
+    background-color: #FFF;
+    box-shadow: 0 0 3px #CCC;
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.content_step {
+    display: flex;
+    width: 960px;
+    max-width: 90vw;
+    justify-content: space-between;
+    background: linear-gradient(45deg, blue 0%, #CCC 1%);
+    background-size: 95% 10px;
+    background-repeat: no-repeat;
+    background-position: center top 50px;
+    padding: 40px 0;
+}
+
+.progress_2 {
+    background: linear-gradient(90deg, blue 20%, #CCC 20%);
+    background-size: 95% 10px;
+    background-repeat: no-repeat;
+    background-position: center top 50px;
+}
+
+.progress_3 {
+    background: linear-gradient(90deg, blue 40%, #CCC 40%);
+    background-size: 95% 10px;
+    background-repeat: no-repeat;
+    background-position: center top 50px;
+}
+
+.progress_4 {
+    background: linear-gradient(90deg, blue 60%, #CCC 60%);
+    background-size: 95% 10px;
+    background-repeat: no-repeat;
+    background-position: center top 50px;
+}
+
+.progress_5 {
+    background: linear-gradient(90deg, blue 80%, #CCC 80%);
+    background-size: 95% 10px;
+    background-repeat: no-repeat;
+    background-position: center top 50px;
+}
+
+.progress_6 {
+    background: linear-gradient(90deg, blue 100%, #CCC 100%);
+    background-size: 95% 10px;
+    background-repeat: no-repeat;
+    background-position: center top 50px;
+}
+
+.item_step i {
+    display: block;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    background-color: #CCC;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+.item_step.ativo i {
+    background-color: blue;
+}
+
+.control_step {
+    display: flex;
+    justify-content: right;
+    width: 960px;
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+.control_step_buttons {
+    display: grid;
+    grid-template-columns: 55px 150px 55px;
+    text-align: center;
+}
+
+.control_step_buttons span {
+    background-color: blue;
+    color: #FFF;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.box_step {
+    width: 960px;
+    margin: 0 auto;
+    max-width: 90vw;
+}
+
+.box_simulado {
+    display: block;
+    padding: 20px;
+    box-shadow: 0 0 7px #333;
+    background-color: #FFF;
+    margin-bottom: 20px;
+    line-height: 40px;
+}
+.box_flex_s {
+    display: flex;
+    justify-content: space-between;
+}

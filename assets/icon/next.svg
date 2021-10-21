@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="50px" viewBox="0 0 70 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 13</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-Home-Novo-Full" transform="translate(-435.000000, -1730.000000)">
+            <g id="Group-13" transform="translate(435.000000, 1730.000000)">
+                <path d="M25,0 L70,0 L70,0 L70,50 L25,50 C11.1928813,50 1.69088438e-15,38.8071187 0,25 C-1.69088438e-15,11.1928813 11.1928813,2.53632657e-15 25,0 Z" id="Rectangle-Copy-9" fill="#00C3DC"></path>
+                <polyline id="Path-2-Copy" stroke="#FFFFFF" stroke-width="3" transform="translate(35.500000, 25.500000) rotate(45.000000) translate(-35.500000, -25.500000) " points="28 18 28 33 43 33"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

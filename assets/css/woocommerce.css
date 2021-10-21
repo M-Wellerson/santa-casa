@@ -1,0 +1,44 @@
+.woocommerce {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-gap: 30px;
+}
+
+.woocommerce-MyAccount-navigation {
+    height: auto;
+    background-color: var(--azul);
+}
+.woocommerce-MyAccount-navigation-link {
+    display: block;
+    float: none;
+}
+.is-active {
+    background-color: rgba(0, 0, 0, .2);
+}
+.not-logged .woocommerce {
+    grid-template-columns: 1fr;
+}
+.full-not-logged {
+    background-image: url(../img/nuvens.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.woocommerce h1,
+.woocommerce h2,
+.woocommerce h3 {
+    color: var(--azul);
+    font-size: 25px;
+}
+.woocommerce-form {
+    background-color: #FFF;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+    border: none;
+}
+.woocommerce button.button {
+    background-color: var(--azul);
+    color: #FFF;
+}
+.woocommerce button.button:hover {
+    background-color: var(--roxo);
+    color: #FFF;
+}

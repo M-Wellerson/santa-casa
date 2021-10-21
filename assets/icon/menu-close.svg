@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 13</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-Home-Mobile-3-Menu" transform="translate(-15.000000, -822.000000)">
+            <g id="Group-13" transform="translate(15.000000, 822.000000)">
+                <circle id="Oval" fill="#141E55" cx="30" cy="30" r="30"></circle>
+                <g id="Group-9" transform="translate(18.000000, 18.000000)" fill="#FFFFFF">
+                    <polygon id="Rectangle-Copy-4" transform="translate(12.843828, 12.500000) rotate(-45.000000) translate(-12.843828, -12.500000) " points="-2.82295069 10.9753565 28.5592323 10.5377343 28.5106076 14.0246435 -2.87157538 14.4622657"></polygon>
+                    <polygon id="Rectangle-Copy-6" transform="translate(12.156172, 12.500000) rotate(45.000000) translate(-12.156172, -12.500000) " points="-3.55923229 10.5377343 27.8229507 10.9753565 27.8715754 14.4622657 -3.5106076 14.0246435"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,178 @@
+
+
+
+:root {
+    /* Font/text values */
+    --unnamed-font-family-ralewayroman-bold: RalewayRoman-Bold;
+    --unnamed-font-family-ralewayroman-black: RalewayRoman-Black;
+    --unnamed-font-family-ralewayroman-light: RalewayRoman-Light;
+    --unnamed-font-family-ralewayroman-semibold: RalewayRoman-SemiBold;
+    --unnamed-font-family-raleway-regular: Raleway-Regular;
+    --unnamed-font-style-normal: normal;
+    --unnamed-font-weight-normal: normal;
+    --unnamed-font-size-18: 18px;
+    --unnamed-font-size-20: 20px;
+    --unnamed-font-size-25: 25px;
+    --unnamed-font-size-30: 30px;
+    --unnamed-font-size-45: 45px;
+    --unnamed-character-spacing-0: 0px;
+    --unnamed-character-spacing-0-6: 0.6px;
+    --unnamed-line-spacing-25: 25px;
+    --unnamed-line-spacing-35: 35px;
+    --unnamed-line-spacing-40: 40px;
+}
+
+/* Character Styles */
+
+.texto-desk2-2 {
+    font-family: var(--unnamed-font-family-ralewayroman-semibold);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-18);
+    line-height: var(--unnamed-line-spacing-25);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-141e55);
+}
+
+.serviços {
+    font-family: var(--unnamed-font-family-ralewayroman-bold);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-20);
+    line-height: var(--unnamed-line-spacing-35);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-141e55);
+}
+
+.texto-b {
+    font-family: var(--unnamed-font-family-raleway-regular);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-18);
+    line-height: var(--unnamed-line-spacing-25);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+}
+
+.titulo-mob {
+    font-family: var(--unnamed-font-family-ralewayroman-black);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-30);
+    line-height: var(--unnamed-line-spacing-35);
+    letter-spacing: var(--unnamed-character-spacing-0-6);
+    color: var(--unnamed-color-0055c8);
+}
+
+.plano-texto {
+    font-family: var(--unnamed-font-family-ralewayroman-light);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-18);
+    line-height: var(--unnamed-line-spacing-25);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-323232);
+}
+
+.subtitulo {
+    font-family: var(--unnamed-font-family-ralewayroman-black);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-45);
+    line-height: var(--unnamed-line-spacing-40);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-323232);
+}
+
+.topico-3 {
+    font-family: var(--unnamed-font-family-ralewayroman-bold);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-25);
+    line-height: var(--unnamed-line-spacing-40);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+}
+
+:root {
+    /* Font/text values */
+    --unnamed-font-family-ralewayroman-bold: RalewayRoman-Bold;
+    --unnamed-font-family-ralewayroman-black: RalewayRoman-Black;
+    --unnamed-font-family-ralewayroman-light: RalewayRoman-Light;
+    --unnamed-font-family-raleway-regular: Raleway-Regular;
+    --unnamed-font-style-normal: normal;
+    --unnamed-font-weight-normal: normal;
+    --unnamed-font-size-18: 18px;
+    --unnamed-font-size-25: 25px;
+    --unnamed-font-size-30: 30px;
+    --unnamed-font-size-45: 45px;
+    --unnamed-character-spacing-0: 0px;
+    --unnamed-character-spacing-0-6: 0.6px;
+    --unnamed-line-spacing-25: 25px;
+    --unnamed-line-spacing-35: 35px;
+    --unnamed-line-spacing-40: 40px;
+    --unnamed-line-spacing-50: 50px;
+}
+
+/* Character Styles */
+
+.subtitulo {
+    font-family: var(--unnamed-font-family-ralewayroman-black);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-45);
+    line-height: var(--unnamed-line-spacing-40);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-323232);
+}
+
+.plano-texto {
+    font-family: var(--unnamed-font-family-ralewayroman-light);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-18);
+    line-height: var(--unnamed-line-spacing-25);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-323232);
+}
+
+.titulo-mob {
+    font-family: var(--unnamed-font-family-ralewayroman-black);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-30);
+    line-height: var(--unnamed-line-spacing-35);
+    letter-spacing: var(--unnamed-character-spacing-0-6);
+    color: var(--unnamed-color-0055c8);
+}
+
+.texto-b {
+    font-family: var(--unnamed-font-family-raleway-regular);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-18);
+    line-height: var(--unnamed-line-spacing-25);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+}
+
+.topico-3 {
+    font-family: var(--unnamed-font-family-ralewayroman-bold);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-25);
+    line-height: var(--unnamed-line-spacing-40);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+}
+
+.plano-novo {
+    font-family: var(--unnamed-font-family-ralewayroman-black);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-25);
+    line-height: var(--unnamed-line-spacing-50);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-00c3dc);
+}
+
