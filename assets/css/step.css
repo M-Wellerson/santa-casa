@@ -17,7 +17,7 @@
     width: 960px;
     max-width: 90vw;
     justify-content: space-between;
-    background: linear-gradient(45deg, blue 0%, #CCC 1%);
+    background: linear-gradient(45deg, #0055C8 0%, #CCC 1%);
     background-size: 95% 10px;
     background-repeat: no-repeat;
     background-position: center top 50px;
@@ -25,35 +25,35 @@
 }
 
 .progress_2 {
-    background: linear-gradient(90deg, blue 20%, #CCC 20%);
+    background: linear-gradient(90deg, #0055C8 20%, #CCC 20%);
     background-size: 95% 10px;
     background-repeat: no-repeat;
     background-position: center top 50px;
 }
 
 .progress_3 {
-    background: linear-gradient(90deg, blue 40%, #CCC 40%);
+    background: linear-gradient(90deg, #0055C8 40%, #CCC 40%);
     background-size: 95% 10px;
     background-repeat: no-repeat;
     background-position: center top 50px;
 }
 
 .progress_4 {
-    background: linear-gradient(90deg, blue 60%, #CCC 60%);
+    background: linear-gradient(90deg, #0055C8 60%, #CCC 60%);
     background-size: 95% 10px;
     background-repeat: no-repeat;
     background-position: center top 50px;
 }
 
 .progress_5 {
-    background: linear-gradient(90deg, blue 80%, #CCC 80%);
+    background: linear-gradient(90deg, #0055C8 80%, #CCC 80%);
     background-size: 95% 10px;
     background-repeat: no-repeat;
     background-position: center top 50px;
 }
 
 .progress_6 {
-    background: linear-gradient(90deg, blue 100%, #CCC 100%);
+    background: linear-gradient(90deg, #0055C8 100%, #CCC 100%);
     background-size: 95% 10px;
     background-repeat: no-repeat;
     background-position: center top 50px;
@@ -70,28 +70,42 @@
 }
 
 .item_step.ativo i {
-    background-color: blue;
-}
-
-.control_step {
-    display: flex;
-    justify-content: right;
-    width: 960px;
-    max-width: 90vw;
-    margin: 0 auto;
+    background-color: #0055C8;
 }
 
 .control_step_buttons {
     display: grid;
-    grid-template-columns: 55px 150px 55px;
+    grid-template-columns: 55px 1fr 55px;
+    align-items: center;
+    justify-items: center;
     text-align: center;
+    width: 100%;
+    margin-top: 2rem;
 }
 
 .control_step_buttons span {
-    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0055C8;
+    width: 100%;
+    height: 50px;
     color: #FFF;
-    border-radius: 50px;
+    font-size: 18px;
     cursor: pointer;
+}
+
+.control_step_buttons span:hover {
+    filter: brightness(150%);
+}
+
+.control_step_buttons span:first-child {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.control_step_buttons span:nth-child(3) {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 .box_step {
@@ -111,4 +125,65 @@
 .box_flex_s {
     display: flex;
     justify-content: space-between;
+}
+
+.form__steps-title {
+    color: #141E55;
+}
+
+.form__steps-body span {
+    color: #141E55 !important;
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: #0055C8 !important;
+}
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
+    border: 2px solid #0055C8 !important;
+}
+
+.btn-contrate {
+    width: 100%;
+    border-radius: 50px;
+    background-color: #0055C8;
+}
+
+.btn-contrate:hover {
+    background-color: #0055C8;
+    filter: brightness(130%);
+}
+
+.galeria-caixao__form-steps {
+    grid-template-columns: 1fr !important;
+}
+
+.form__steps-galery-photos {
+    grid-template-columns: repeat(4, 1fr) !important;
+}
+
+.galeria-caixao__form-steps-body {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-column-gap: 2rem;
+}
+
+.form__steps-beneficios {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    /* padding: 3rem; */
+    /* border: 2px solid #141E55; */
+}
+
+.form__steps-select div label {
+    color: #141E55 !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .steps__bar-text {
+        display: none;
+    }
+    .full_step {
+        margin-top: 2rem;
+    }
 }
