@@ -19,8 +19,6 @@ Template Name: Step
 
     <form action="javascript:void(0)">
 
-
-
         <div class="box_step" v-if="step==1">
             <div class="row">
                 <div class="col s12 m12 l8">
