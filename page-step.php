@@ -2,7 +2,23 @@
 /*
 Template Name: Step
 */
+
+$all_post_ids = get_posts(array(
+    // 'fields'          => 'ids',
+    'posts_per_page'  => -1,
+    'post_type'       => 'plano'
+));
+
+$planos = array_map( function($plano) {
+    return get_fields($plano->ID);
+}, $all_post_ids );
+
 ?>
+
+<script>
+    globalThis._planos = <?php echo json_encode($planos);  ?>;
+</script>
+
 <?php get_header(); ?>
 
 <div id="simulador">
