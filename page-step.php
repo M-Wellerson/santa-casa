@@ -41,10 +41,10 @@ $planos = array_map( function($plano) {
                     <h3 class="form__steps-title">Tipo de Plano</h3>
                     <hr>
                     <div class="row form__steps-body">
-                        <label class="col s6"> <input type="radio" class="with-gap" name="plano"> <span> Plano Familiar / Individual </span> </label>
-                        <label class="col s6"> <input type="radio" class="with-gap" name="plano"> <span> Plano Igreja </span> </label>
-                        <label class="col s6"> <input type="radio" class="with-gap" name="plano"> <span> Plano Pet </span> </label>
-                        <label class="col s6"> <input type="radio" class="with-gap" name="plano"> <span> Plano Empresarial </span> </label>
+                        <label class="col s6" v-for="(plano, indice) in planos"> 
+                            <input type="radio" class="with-gap" v-model="plano_id" :value="indice" name="plano" @change="set_plano"> 
+                            <span> {{plano.titulo}} </span> 
+                        </label>
                     </div>
                 </div>
                 <div class="col s12 m12 l4 center-align">
@@ -52,7 +52,7 @@ $planos = array_map( function($plano) {
                         <center>
                             <strong ong>Simulador</strong>
                         </center>
-                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
@@ -101,7 +101,7 @@ $planos = array_map( function($plano) {
                         <center>
                             <strong ong>Simulador</strong>
                         </center>
-                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
@@ -147,7 +147,7 @@ $planos = array_map( function($plano) {
                         <center>
                             <strong ong>Simulador</strong>
                         </center>
-                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
@@ -211,7 +211,7 @@ $planos = array_map( function($plano) {
                         <center>
                             <strong ong>Simulador</strong>
                         </center>
-                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
@@ -283,7 +283,7 @@ $planos = array_map( function($plano) {
                         <center>
                             <strong ong>Simulador</strong>
                         </center>
-                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
@@ -331,7 +331,7 @@ $planos = array_map( function($plano) {
                         <center>
                             <strong ong>Simulador</strong>
                         </center>
-                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
