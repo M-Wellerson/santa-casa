@@ -3,20 +3,42 @@
 Template Name: Step
 */
 
-$all_post_ids = get_posts(array(
-    // 'fields'          => 'ids',
+//Planos
+$all_post_ids_planos = get_posts(array(
     'posts_per_page'  => -1,
     'post_type'       => 'plano'
 ));
 
 $planos = array_map( function($plano) {
-    return get_fields($plano->ID);
-}, $all_post_ids );
+    $fields = get_fields($plano->ID);
+    $fields['urnas'] = array_map( function($urna){
+        $fieldsUrnas = get_fields($urna->ID);
+        return [
+            "imagem"=> $fieldsUrnas['foto_da_urna'],
+            "nome"  => $fieldsUrnas['nome_da_urna'],
+            "id"    => $urna->ID,
+            "ref"   => $fieldsUrnas['referencia'],
+        ];
+    }, $fields['urnas']);
+    return $fields;
+}, $all_post_ids_planos );
+
+//Beneficios
+$all_post_ids_beneficios = get_posts(array(
+    'posts_per_page'  => -1,
+    'post_type'       => 'beneficios'
+));
+
+$beneficios = array_map( function($beneficio) {
+    $fieldBeneficios = get_fields($beneficio->ID);
+    return $fieldBeneficios;
+}, $all_post_ids_beneficios );
 
 ?>
 
 <script>
-    globalThis._planos = <?php echo json_encode($planos);  ?>;
+    globalThis._planos     = <?php echo json_encode($planos);  ?>;
+    globalThis._beneficios = <?php echo json_encode($beneficios);  ?>;
 </script>
 
 <?php get_header(); ?>
@@ -77,6 +99,7 @@ $planos = array_map( function($plano) {
                     <h3 class="form__steps-title">Selecione um Padrão</h3>
                     <hr>
                     <div class="row form__steps-body">
+
                         <?php foreach (get_dir_catalogo() as $indice => $base) : ?>
                             <?php $fotos = get_fotos_catalogo('6-super-luxo-e-presidencial'); ?>
                             <div class="js-<?= $base ?> tab-catalogo <?= $indice == 0 ? 'active-tab' : '' ?> galeria-caixao__form-steps-body">
@@ -94,6 +117,7 @@ $planos = array_map( function($plano) {
                                 </div>
                             </div>
                         <?php endforeach; ?>
+
                     </div>
                 </div>
                 <div class="col s12 m12 l4 center-align">
