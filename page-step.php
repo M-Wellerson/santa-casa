@@ -9,19 +9,22 @@ $all_post_ids_planos = get_posts(array(
     'post_type'       => 'plano'
 ));
 
-$planos = array_map( function($plano) {
+$planos = array_map(function ($plano) {
     $fields = get_fields($plano->ID);
-    $fields['urnas'] = array_map( function($urna){
+    if (!$fields['urnas']) {
+        $fields['urnas'] = [];
+    }
+    $fields['urnas'] = array_map(function ($urna) {
         $fieldsUrnas = get_fields($urna->ID);
         return [
-            "imagem"=> $fieldsUrnas['foto_da_urna'],
+            "imagem" => $fieldsUrnas['foto_da_urna'],
             "nome"  => $fieldsUrnas['nome_da_urna'],
             "id"    => $urna->ID,
             "ref"   => $fieldsUrnas['referencia'],
         ];
     }, $fields['urnas']);
     return $fields;
-}, $all_post_ids_planos );
+}, $all_post_ids_planos);
 
 //Beneficios
 $all_post_ids_beneficios = get_posts(array(
@@ -29,15 +32,16 @@ $all_post_ids_beneficios = get_posts(array(
     'post_type'       => 'beneficios'
 ));
 
-$beneficios = array_map( function($beneficio) {
+$beneficios = array_map(function ($beneficio) {
     $fieldBeneficios = get_fields($beneficio->ID);
+    $fieldBeneficios['id'] = $beneficio->ID;
     return $fieldBeneficios;
-}, $all_post_ids_beneficios );
+}, $all_post_ids_beneficios);
 
 ?>
 
 <script>
-    globalThis._planos     = <?php echo json_encode($planos);  ?>;
+    globalThis._planos = <?php echo json_encode($planos);  ?>;
     globalThis._beneficios = <?php echo json_encode($beneficios);  ?>;
 </script>
 
@@ -63,9 +67,9 @@ $beneficios = array_map( function($beneficio) {
                     <h3 class="form__steps-title">Tipo de Plano</h3>
                     <hr>
                     <div class="row form__steps-body">
-                        <label class="col s6" v-for="(plano, indice) in planos"> 
-                            <input type="radio" class="with-gap" v-model="plano_id" :value="indice" name="plano" @change="set_plano"> 
-                            <span> {{plano.titulo}} </span> 
+                        <label class="col s6" v-for="(plano, indice) in planos">
+                            <input type="radio" class="with-gap" v-model="plano_id" :value="indice" name="plano" @change="set_plano">
+                            <span> {{plano.titulo}} </span>
                         </label>
                     </div>
                 </div>
@@ -75,7 +79,7 @@ $beneficios = array_map( function($beneficio) {
                             <strong ong>Simulador</strong>
                         </center>
                         <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
-                        <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
@@ -100,23 +104,24 @@ $beneficios = array_map( function($beneficio) {
                     <hr>
                     <div class="row form__steps-body">
 
-                        <?php foreach (get_dir_catalogo() as $indice => $base) : ?>
-                            <?php $fotos = get_fotos_catalogo('6-super-luxo-e-presidencial'); ?>
-                            <div class="js-<?= $base ?> tab-catalogo <?= $indice == 0 ? 'active-tab' : '' ?> galeria-caixao__form-steps-body">
+                    
+
+                        <div class="row form__steps-body">
+                            <div class="js-simulador tab-catalogo active-tab galeria-caixao__form-steps-body">
                                 <div class="galeria-caixao galeria-caixao__form-steps">
-                                    <img id="foto_destaque-<?= $base ?>" src="<?= get_template_directory_uri() ?>/assets/catalogo/6-super-luxo-e-presidencial/<?= $fotos[0] ?>.jpg">
+                                    <img id="foto_destaque-simulador" :src="planos[plano_id].urnas[0].imagem">
                                     <div class="form__steps-galery-photos">
-                                        <?php foreach ($fotos as $foto) : ?>
-                                            <img onclick="galeria(this, '<?= $base ?>')" data-ref="Ref. <?= $foto ?>" src="<?= get_template_directory_uri() ?>/assets/catalogo/6-super-luxo-e-presidencial/<?= $foto ?>.jpg">
-                                        <?php endforeach; ?>
+                                        <img v-for="urna in planos[plano_id].urnas" onclick="galeria(this, 'simulador')" :data-ref="'Ref.' + urna.ref " :src="urna.imagem">
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="font-25" id="foto_ref-<?= $base ?>"> Popular </p>
-                                    <p class="font-25" id="foto_ref-<?= $base ?>">Ref. <?= $foto ?> </p>
+                                    <p class="font-25" id="foto_ref-simulador-nome"> {{planos[plano_id].urnas[0].nome}} </p>
+                                    <p class="font-25" id="foto_ref-simulador"> {{planos[plano_id].urnas[0].ref}}</p>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+                        </div>
+
+
 
                     </div>
                 </div>
@@ -126,7 +131,7 @@ $beneficios = array_map( function($beneficio) {
                             <strong ong>Simulador</strong>
                         </center>
                         <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
-                        <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
@@ -150,20 +155,20 @@ $beneficios = array_map( function($beneficio) {
                     <h3 class="form__steps-title">Idade de Beneficiario</h3>
                     <hr>
                     <div class="row form__steps-body">
-                    <div class="row form__steps-body">
-                        <div class="input-field col s3 m3 l3">
-                            <label for="">DD</label>
-                            <input type="text" required>
+                        <div class="row form__steps-body">
+                            <div class="input-field col s3 m3 l3">
+                                <label for="">DD</label>
+                                <input type="text" v-model="dd" required>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <label for="">MM</label>
+                                <input type="text" v-model="mm" required>
+                            </div>
+                            <div class="input-field col s3 m3 l3">
+                                <label for="">AAAA</label>
+                                <input type="text" v-model="aaaa" required>
+                            </div>
                         </div>
-                        <div class="input-field col s3 m3 l3">
-                            <label for="">MM</label>
-                            <input type="text" required>
-                        </div>
-                        <div class="input-field col s3 m3 l3">
-                            <label for="">AAAA</label>
-                            <input type="text" required>
-                        </div>
-                    </div>
                     </div>
                 </div>
                 <div class="col s12 m12 l4 center-align">
@@ -172,7 +177,7 @@ $beneficios = array_map( function($beneficio) {
                             <strong ong>Simulador</strong>
                         </center>
                         <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
-                        <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
@@ -196,38 +201,13 @@ $beneficios = array_map( function($beneficio) {
                     <h3 class="form__steps-title">Beneficiario Opcionais</h3>
                     <hr>
                     <div class="row form__steps-body">
-                        <label class="col s12">
-                            <input type="radio" class="with-gap" name="plano">
+                        <label class="col s12" v-for="beneficio in beneficios" >
+                            <input type="radio" class="with-gap" name="plano"  v-model="beneficio_id" :value="beneficio.id" @change="set_beneficio">
                             <span class="form__steps-beneficios">
-                                <span>Seguro Padrão + clube de Vantagens</span>
-                                <span>Confira todos os beneficios</span>
-                                <span>(+R$7,58 ao mês)</span>
+                                {{beneficio.titulo}}
                             </span>
                         </label>
-                        <label class="col s12">
-                            <input type="radio" class="with-gap" name="plano">
-                            <span class="form__steps-beneficios">
-                                <span>Seguro Padrão + clube de Vantagens</span>
-                                <span>Confira todos os beneficios</span>
-                                <span>(+R$7,58 ao mês)</span>
-                            </span>
-                        </label>
-                        <label class="col s12">
-                            <input type="radio" class="with-gap" name="plano">
-                            <span class="form__steps-beneficios">
-                                <span>Seguro Padrão + clube de Vantagens</span>
-                                <span>Confira todos os beneficios</span>
-                                <span>(+R$7,58 ao mês)</span>
-                            </span>
-                        </label>
-                        <label class="col s12">
-                            <input type="radio" class="with-gap" name="plano">
-                            <span class="form__steps-beneficios">
-                                <span>Seguro Padrão + clube de Vantagens</span>
-                                <span>Confira todos os beneficios</span>
-                                <span>(+R$7,58 ao mês)</span>
-                            </span>
-                        </label>
+                        
                     </div>
                 </div>
                 <div class="col s12 m12 l4 center-align">
@@ -236,7 +216,7 @@ $beneficios = array_map( function($beneficio) {
                             <strong ong>Simulador</strong>
                         </center>
                         <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
-                        <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
@@ -260,46 +240,21 @@ $beneficios = array_map( function($beneficio) {
                     <h3 class="form__steps-title">Adicionar Dependente</h3>
                     <hr>
                     <div class="row form__steps-body">
-                        <div class="row form__steps-select">
+
+                        <div class="row form__steps-select" for="dependentes">
                             <div class="input-field col s8 l6">
-                                <select>
-                                    <option value="" disabled selected>Choose your option</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
-                                </select>
-                                <label>Dependente 1</label>
+                                <input type="text">
+                                <label>Dependente</label>
                             </div>
                             <div class="input-field col s4 l4">
                                 <select>
-                                    <option value="" disabled selected>Choose your option</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
+                                    <option value="" selected>Choose your option</option>
+                                    <option  v-for="beneficio in beneficios">beneficio?.titulo</option>
                                 </select>
                                 <label>Beneficio</label>
                             </div>
                         </div>
-                        <div class="row form__steps-select">
-                            <div class="input-field col s8 l6">
-                                <select>
-                                    <option value="" disabled selected>Choose your option</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
-                                </select>
-                                <label>Dependente 2</label>
-                            </div>
-                            <div class="input-field col s4 l4">
-                                <select>
-                                    <option value="" disabled selected>Choose your option</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
-                                </select>
-                                <label>Beneficio</label>
-                            </div>
-                        </div>
+                        <button class="btn btn-contrate">Adicionar Dependente</button>
                     </div>
                 </div>
                 <div class="col s12 m12 l4 center-align">
@@ -308,7 +263,7 @@ $beneficios = array_map( function($beneficio) {
                             <strong ong>Simulador</strong>
                         </center>
                         <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
-                        <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
@@ -356,7 +311,7 @@ $beneficios = array_map( function($beneficio) {
                             <strong ong>Simulador</strong>
                         </center>
                         <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
-                        <div class="box_flex_s"> <strong>Opcionais</strong> <span>R$0,00 / mês</span> </div>
+                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <strong>Beneficiario com menor de 64.</strong>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
