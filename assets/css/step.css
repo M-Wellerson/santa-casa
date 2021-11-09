@@ -178,6 +178,26 @@
 .form__steps-select div label {
     color: #141E55 !important;
 }
+.btn_exclude {
+    color: #C00;
+    line-height: 68px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 18px;
+    font-family: monospace;
+}
+
+.my_label {
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-bottom: 1px solid #9e9e9e;
+    outline: none;
+}
+.my_label:focus {
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-bottom: 2px solid #9e9e9e;
+}
 
 @media only screen and (max-width: 600px) {
     .steps__bar-text {

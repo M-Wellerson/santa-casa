@@ -241,20 +241,24 @@ $beneficios = array_map(function ($beneficio) {
                     <hr>
                     <div class="row form__steps-body">
 
-                        <div class="row form__steps-select" for="dependentes">
-                            <div class="input-field col s8 l6">
-                                <input type="text">
+                        <div class="row form__steps-select" v-for="(dep, i) in dependentes">
+                            <div class="col s1 l1 btn_exclude" >
+                                <span @click="remove_dependentes(dep.id)" :data-id="dep.id">
+                                    x
+                                </span>
+                            </div>
+                            <div class="input-field col s7 l6">
+                                <input type="text" v-model="dep.nome">
                                 <label>Dependente</label>
                             </div>
-                            <div class="input-field col s4 l4">
-                                <select>
-                                    <option value="" selected>Choose your option</option>
-                                    <option  v-for="beneficio in beneficios">beneficio?.titulo</option>
+                            <div class="input-field col s4">
+                                <select class="browser-default my_label" v-model="dep.beneficio">
+                                    <option value="0" disabled selected>Beneficio</option>
+                                    <option :value="be.id" v-for="be in beneficios">{{be.titulo}}</option>
                                 </select>
-                                <label>Beneficio</label>
                             </div>
                         </div>
-                        <button class="btn btn-contrate">Adicionar Dependente</button>
+                        <button class="btn btn-contrate" @click="add_dependentes">Adicionar Dependente</button>
                     </div>
                 </div>
                 <div class="col s12 m12 l4 center-align">
@@ -289,19 +293,19 @@ $beneficios = array_map(function ($beneficio) {
                     <div class="row form__steps-body">
                         <div class="input-field col s12 m12 l9">
                             <label for="">Nome do Titular *</label>
-                            <input type="text" required>
+                            <input type="text" v-model="nome_titular" required>
                         </div>
                         <div class="input-field col s12 m12 l9">
                             <label for="">Email *</label>
-                            <input type="text" required>
+                            <input type="text" v-model="email" required>
                         </div>
                         <div class="input-field col s12 m12 l9">
                             <label for="">Telefone *</label>
-                            <input type="text" required>
+                            <input type="text" v-model="telefone" required>
                         </div>
                         <div class="input-field col s12 m12 l9">
                             <label for="">Celular</label>
-                            <input type="text">
+                            <input type="text" v-model="celular">
                         </div>
                     </div>
                 </div>
