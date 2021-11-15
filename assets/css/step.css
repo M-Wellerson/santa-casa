@@ -22,6 +22,7 @@
     background-repeat: no-repeat;
     background-position: center top 50px;
     padding: 40px 0;
+    padding-bottom: 30px;
 }
 
 .progress_2 {
@@ -66,7 +67,7 @@
     height: 30px;
     background-color: #CCC;
     border-radius: 50px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .item_step.ativo i {
@@ -126,9 +127,23 @@
     display: flex;
     justify-content: space-between;
 }
+.box_simulado strong { 
+    color: #131d54;
+    font-weight: bold !important;
+
+}
+.box_simulado b { 
+    color: #131d54;
+    font-weight: 900 !important;
+    font-size: 18px;
+
+}
 
 .form__steps-title {
     color: #141E55;
+    margin: 0;
+    padding: 0;
+    font-size: 34px;
 }
 
 .form__steps-body span {
@@ -137,19 +152,21 @@
 
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
     background-color: #0055C8 !important;
+    
 }
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
     border: 2px solid #0055C8 !important;
+    
 }
 
 .btn-contrate {
     width: 100%;
     border-radius: 50px;
-    background-color: #0055C8;
+    background-color: #9b9b9b;
 }
 
 .btn-contrate:hover {
-    background-color: #0055C8;
+    background-color: #7a7979;
     filter: brightness(130%);
 }
 
@@ -179,13 +196,23 @@
     color: #141E55 !important;
 }
 .btn_exclude {
-    color: #C00;
-    line-height: 68px;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 800;
-    font-size: 18px;
+    color: #FFF !important;    
+    font-weight: 900;
     font-family: monospace;
+    background-color: #C00;
+    margin-right: 20px;
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    font-style: normal !important;
+    cursor: pointer;
+}
+.btn_exclude:hover  {
+    background-color: #800;
 }
 
 .my_label {
@@ -197,6 +224,59 @@
 .my_label:focus {
     border: 1px solid rgba(0, 0, 0, 0);
     border-bottom: 2px solid #9e9e9e;
+}
+
+.steps__bar-text {
+    color: #131d54;
+}
+
+.grid-radio {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+}
+
+.radio-text {
+    display: block;
+    text-indent: 20px;
+}
+
+.form__steps-beneficios {
+    background-color: #FFF;
+    border: 1px solid  #131d54;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    padding: 20px;
+    display: grid !important;
+    height: auto !important;
+    grid-template-columns: 1fr 1fr;
+}
+.form__steps-beneficios  {
+    border: 1px solid #CCC !important;
+}
+
+.text-right {
+    text-align: right;
+    color: #131d54;
+    text-decoration: underline;
+}
+
+.link-add-dep {
+    display: block;
+    text-align: #131d54;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.dep-title {
+    color: #131d54;
+    font-weight: bold;
+}
+
+.link-add-dep:hover {
+    font-weight: 900;
 }
 
 @media only screen and (max-width: 600px) {

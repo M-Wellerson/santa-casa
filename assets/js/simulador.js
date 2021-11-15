@@ -7,9 +7,8 @@ var app = new Vue({
         plano_id: 0,
         plano_title: 'Plano Base',
         plano_price: '0,00',
-        dd: null,
-        mm: null,
-        aaaa: null,
+        
+        idade: '63 anos ou menos',
 
         beneficio_id: null,
         beneficio_title: 'Opcionais',
@@ -28,16 +27,24 @@ var app = new Vue({
         telefone: null,
         celular: null,
 
+        total: '0,00',
+
+        idades: [
+            "63 anos ou menos",
+            "69 a 74 anos",
+            "80 anos ou mais",
+        ]
+
     },
     methods: {
         nex() {
-            if( this.step < 6 ) {
+            if (this.step < 6) {
                 ++this.step
             }
             this.update()
         },
         prev() {
-            if( this.step > 1 ) {
+            if (this.step > 1) {
                 --this.step
             }
             this.update()
@@ -60,36 +67,36 @@ var app = new Vue({
                 telefone: this.telefone,
                 celular: this.celular,
             }
-            localStorage.setItem('simulador_tmp', JSON.stringify( payload ) )
+            localStorage.setItem('simulador_tmp', JSON.stringify(payload))
         },
         set_plano() {
             this.plano_title = this.planos[this.plano_id].titulo
             this.plano_price = this.planos[this.plano_id].valor_do_plano
         },
         set_beneficio() {
-            let beneficio = this.beneficios.find( b => b.id == this.beneficio_id )
+            let beneficio = this.beneficios.find(b => b.id == this.beneficio_id)
             this.beneficio_title = beneficio.titulo
             this.beneficio_price = beneficio.valor_mensal
         },
         add_dependentes() {
             let id = this.dependentes.length + 1
-            this.dependentes.push( {
+            this.dependentes.push({
                 id: this.min_max(1, 99),
                 nome: null,
                 beneficio: null
-            } )
+            })
             console.log(this.dependentes)
-            
+
         },
         remove_dependentes(id) {
             console.log(id)
-            this.dependentes = this.dependentes.filter( d => d.id != id )
+            this.dependentes = this.dependentes.filter(d => d.id != id)
         },
         min_max(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min + 1)) + min;
-          }
+        }
 
     },
     mounted() {
@@ -97,8 +104,8 @@ var app = new Vue({
         this.beneficios = globalThis._beneficios
 
 
-        let backup =  localStorage.getItem('simulador_tmp')
-        if(backup) {
+        let backup = localStorage.getItem('simulador_tmp')
+        if (backup) {
             backup = JSON.parse(backup)
             this.step = backup.step
             this.plano_id = backup.plano_id
