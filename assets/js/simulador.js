@@ -5,7 +5,7 @@ var app = new Vue({
         planos: [],
         beneficios: [],
         plano_id: 0,
-        plano_title: 'Plano Base',
+        plano_title: '...',
         plano_price: '0,00',
         
         idade: '63 anos ou menos',
@@ -38,7 +38,7 @@ var app = new Vue({
     },
     methods: {
         nex() {
-            if (this.step < 6) {
+            if (this.step < 7) {
                 ++this.step
             }
             this.update()
@@ -96,6 +96,18 @@ var app = new Vue({
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min + 1)) + min;
+        },
+        voltar() {
+            localStorage.removeItem('simulador_tmp')
+            window.location.reload()
+        },
+        finalizar() {
+            // this.nex()
+            let form = new FormData(this.$refs.form_cadastro)
+            fetch( 'http://google.com.br', {
+                method: 'POST',
+                body: form
+            } )
         }
 
     },

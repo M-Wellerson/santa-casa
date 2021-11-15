@@ -59,7 +59,7 @@ $beneficios = array_map(function ($beneficio) {
         </div>
     </div>
 
-    <form action="javascript:void(0)">
+    <form action="javascript:void(0)" ref="form_cadastro">
 
         <div class="box_step" v-if="step==1">
             <div class="row">
@@ -78,7 +78,8 @@ $beneficios = array_map(function ($beneficio) {
                         <center>
                             <b>Simulador</b>
                         </center>
-                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
                         <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
@@ -130,7 +131,8 @@ $beneficios = array_map(function ($beneficio) {
                         <center>
                             <strong ong>Simulador</strong>
                         </center>
-                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
                         <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
@@ -166,7 +168,8 @@ $beneficios = array_map(function ($beneficio) {
                         <center>
                             <strong ong>Simulador</strong>
                         </center>
-                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
                         <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
@@ -209,7 +212,8 @@ $beneficios = array_map(function ($beneficio) {
                         <center>
                             <strong ong>Simulador</strong>
                         </center>
-                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
                         <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
@@ -245,15 +249,15 @@ $beneficios = array_map(function ($beneficio) {
                             </div>
                             <div class="input-field col s12 l12">
                                 <small>Dependente</small>
-                                <input type="text" v-model="dep.nome" placeholder="Nome">
+                                <input type="text" v-model="dep.nome" name="dep_nome[]" placeholder="Nome">
                             </div>
                             <div class="input-field col s6">
                                 <small>Dependente</small>
-                                <input type="date" v-model="dep.data">
+                                <input type="date" v-model="dep.data" name="dep_data">
                             </div>
                             <div class="input-field col s6">
                                 <small>Seguro do Dependente</small>
-                                <select class="browser-default my_label" v-model="dep.beneficio">
+                                <select class="browser-default my_label" v-model="dep.beneficio" name="dep_beneficio">
                                     <option value="0" disabled selected>Beneficio</option>
                                     <option :value="be.id" v-for="be in beneficios">{{be.titulo}}</option>
                                 </select>
@@ -268,7 +272,8 @@ $beneficios = array_map(function ($beneficio) {
                         <center>
                             <strong ong>Simulador</strong>
                         </center>
-                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
                         <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
@@ -295,23 +300,23 @@ $beneficios = array_map(function ($beneficio) {
                     <div class="row form__steps-body">
                         <div class="input-field col s12 m12 l12">
                             <div for="">Nome do Titular *</div>
-                            <input type="text" v-model="nome_titular" required>
+                            <input type="text" v-model="nome_titular" name="nome_titular" required>
                         </div>
                         <div class="input-field col s12 m12 l8">
                             <div for="">Email *</div>
-                            <input type="text" v-model="email" required>
+                            <input type="text" v-model="email" name="email" required>
                         </div>
                         <div class="input-field col s12 m12 l4">
                             <div for="">Data de Nascimento *</div>
-                            <input type="date" v-model="celular">
+                            <input type="date" v-model="celular" name="celular">
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <div for="">Telefone *</div>
-                            <input type="text" v-model="telefone" required>
+                            <input type="text" v-model="telefone" name="telefone" required>
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <div for="">Celular</div>
-                            <input type="text" v-model="celular">
+                            <input type="text" v-model="celular" name="celular">
                         </div>
                        
                     </div>
@@ -321,13 +326,14 @@ $beneficios = array_map(function ($beneficio) {
                         <center>
                             <strong ong>Simulador</strong>
                         </center>
-                        <div class="box_flex_s"> <strong>{{plano_title}}</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
+                        <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
                         <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
                     </div>
-                    <button class="btn btn-contrate" @click="nex"> contrate esse plano</button>
+                    <button class="btn btn-contrate btn-contrate-active" @click="finalizar"> contrate esse plano</button>
                     <div class="control_step">
                         <div class="control_step_buttons">
                             <span @click="prev">
@@ -341,12 +347,21 @@ $beneficios = array_map(function ($beneficio) {
         </div>
 
 
-        <div class="box_step" v-if="step==6">
+        <div class="box_step" v-if="step==7">
             <div class="row">
                 <div class="col s12 m12 l12">
+                    <br> <br>
                     <h3 class="form__steps-title text-center">
                         Solicitação Enviada!
-                    </h3>
+                    </h3> <br>
+                    <p class="text-center">
+                        Em breve um dos nossos atendentes <br>
+                        entrará em contato para finalizar <br>
+                        a contratação do seu plano.
+                    </p>
+                    <a class="link-center" href="javascript:void(0)" @click="voltar">
+                        voltar
+                    </a>
                     
 
                 </div>

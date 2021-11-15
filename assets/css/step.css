@@ -52,7 +52,7 @@
     background-repeat: no-repeat;
     background-position: center top 50px;
 }
-
+.progress_7,
 .progress_6 {
     background: linear-gradient(90deg, #0055C8 100%, #CCC 100%);
     background-size: 95% 10px;
@@ -278,6 +278,32 @@
 .link-add-dep:hover {
     font-weight: 900;
 }
+
+.link-center {
+    text-decoration: underline;
+    color: #131d54;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+.link-center:hover {
+    font-weight: 900;
+}
+
+.linha-plano-base {
+    margin-top: -20px;
+    margin-bottom: -10px;
+}
+
+.btn-contrate-active {
+    background-color: #131d54;
+}
+
+.btn-contrate-active:hover {
+    background-color: #080f36;
+}
+
 
 @media only screen and (max-width: 600px) {
     .steps__bar-text {
