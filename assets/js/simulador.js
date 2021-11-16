@@ -9,7 +9,7 @@ var app = new Vue({
         plano_price: '0,00',
 
         urna_id: null,
-        
+
         idade: null,
 
         beneficio_id: null,
@@ -34,9 +34,10 @@ var app = new Vue({
         total: '0,00',
 
         idades: [
-            "63 anos ou menos",
-            "69 a 74 anos",
-            "80 anos ou mais",
+            "até 59 anos",
+            "de 60 a 69",
+            "de 70 a 79",
+            "acima de 80",
         ],
 
         mensagem: '...'
@@ -50,15 +51,32 @@ var app = new Vue({
         to_money(valor) {
             return (valor / 100).toLocaleString('pt-br', { minimumFractionDigits: 2 })
         },
+        get_idade(data_nascimento) {
+
+            let dt2 = new Date(data_nascimento)
+            let dt1 = new Date()
+            var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+            diff /= (60 * 60 * 24);
+            let gap = Math.abs(Math.round(diff / 365.25));
+            return gap
+
+        },
+        taxa_dependente(idade) {
+            if (idade < 18) return '1,50'
+            if (idade > 18 && idade < 50) return '6,50'
+            if (idade > 49 && idade < 60) return '8,00'
+            if (idade > 59 && idade < 70) return '9,50'
+            if (idade > 69 && idade < 80) return '30,00'
+            if (idade > 79) return '40,00'
+        },
         calc_total() {
-            let plano_price = parseInt( this.plano_price.replace(/\D/,'') )
-            let beneficio_price = parseInt( this.beneficio_price.replace(/\D/,'') )
+            let plano_price = parseInt(this.plano_price.replace(/\D/, ''))
+            let beneficio_price = parseInt(this.beneficio_price.replace(/\D/, ''))
             let soma = plano_price + beneficio_price
             this.total = this.to_money(soma)
-            console.log(soma)
-            if( soma < 6000 ) {
+            if (soma < 6000) {
                 this.mensagem = 'No primeiro mês, pague somente a taxa de adesão no valor de R$ 60,00'
-            }else {
+            } else {
                 this.mensagem = '+ R$60,00 de taxa de adesão (unica)'
             }
         },
@@ -127,27 +145,28 @@ var app = new Vue({
             window.location.reload()
         },
         finalizar() {
-            // this.nex()
+            this.nex()
             let form = new FormData(this.$refs.form_cadastro)
-            fetch( 'http://google.com.br', {
+            fetch('http://google.com.br', {
                 method: 'POST',
                 body: form
-            } )
+            })
         },
         next_idade() {
-            if(this.idade == '80 anos ou mais') {
+            if (this.idade == 'acima de 80') {
                 this.nex()
                 this.nex()
                 return null
             }
             this.nex()
         }
-
     },
     mounted() {
         this.planos = globalThis._planos
         this.beneficios = globalThis._beneficios
-        
+
+        this.get_idade('1987-09-18')
+
 
         let backup = localStorage.getItem('simulador_tmp')
         if (backup) {
