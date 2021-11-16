@@ -61,14 +61,14 @@ $beneficios = array_map(function ($beneficio) {
 
     <form action="javascript:void(0)" ref="form_cadastro">
 
-        <div class="box_step" v-if="step==1">
+        <div class="box_step" v-show="step==1">
             <div class="row">
                 <div class="col s12 m12 l8">
                     <h3 class="form__steps-title">Tipo de Plano</h3>
                     <hr>
                     <div class="row form__steps-body">
                         <label class="col s6 " v-for="(plano, indice) in planos" style="margin: 15px 0">
-                            <input type="radio" class="with-gap" v-model="plano_id" :value="indice" name="plano" @change="set_plano">
+                            <input type="radio" class="with-gap" v-model="plano_id" :value="indice" name="plano_id" @change="set_plano">
                             <span class="radio-text"> {{plano.titulo}} </span>
                         </label>
                     </div>
@@ -80,7 +80,7 @@ $beneficios = array_map(function ($beneficio) {
                         </center>
                         <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
-                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
@@ -98,32 +98,30 @@ $beneficios = array_map(function ($beneficio) {
             </div>
         </div>
 
-        <div class="box_step" v-if="step==2">
+        <div class="box_step" v-show="step==2">
             <div class="row">
                 <div class="col s12 m12 l8">
                     <h3 class="form__steps-title">Selecione um Padrão</h3>
-                    <hr>
+                    <hr> <br>
                     <div class="row form__steps-body">
-
-
-
                         <div class="row form__steps-body">
                             <div class="js-simulador tab-catalogo active-tab galeria-caixao__form-steps-body">
                                 <div class="galeria-caixao galeria-caixao__form-steps">
                                     <img id="foto_destaque-simulador" :src="planos[plano_id].urnas[0].imagem">
+                                    <br>
                                     <div class="form__steps-galery-photos">
-                                        <img v-for="urna in planos[plano_id].urnas" onclick="galeria(this, 'simulador')" :data-ref="'Ref.' + urna.ref " :src="urna.imagem">
+                                        <label v-for="urna in planos[plano_id].urnas" :class="{urna_active: urna_id == urna.id }">
+                                            <input type="radio" name="urna_id" :value="urna.id" v-model="urna_id">
+                                            <img  onclick="galeria(this, 'simulador')" :data-ref="'REF. ' + urna.ref " :src="urna.imagem">
+                                        </label>
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="font-25" id="foto_ref-simulador-nome"> {{planos[plano_id].urnas[0].nome}} </p>
-                                    <p class="font-25" id="foto_ref-simulador"> {{planos[plano_id].urnas[0].ref}}</p>
+                                    <span id="foto_destaque-nome" class="legenda-padrao legenda-padrao-mb" > {{planos[plano_id].urnas[0].nome}} </span>
+                                    <span id="foto_ref-simulador" class="legenda-padrao" > REF. {{planos[plano_id].urnas[0].ref}}</span>
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
                 <div class="col s12 m12 l4 center-align">
@@ -133,7 +131,7 @@ $beneficios = array_map(function ($beneficio) {
                         </center>
                         <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
-                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
@@ -151,14 +149,14 @@ $beneficios = array_map(function ($beneficio) {
             </div>
         </div>
 
-        <div class="box_step" v-if="step==3">
+        <div class="box_step" v-show="step==3">
             <div class="row">
                 <div class="col s12 m12 l8">
                     <h3 class="form__steps-title">Idade de Beneficiario</h3>
                     <hr>
                     <div class="row form__steps-body">
                         <label class="col s6 " v-for="idade in idades" style="margin: 15px 0">
-                            <input type="radio" class="with-gap" name="idade" :value="idade" v-model="idade">
+                            <input type="radio" class="with-gap" name="idade_beneficiario" :value="idade" v-model="idade">
                             <span class="radio-text"> {{idade}} </span>
                         </label>
                     </div>
@@ -170,7 +168,7 @@ $beneficios = array_map(function ($beneficio) {
                         </center>
                         <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
-                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
@@ -188,7 +186,7 @@ $beneficios = array_map(function ($beneficio) {
             </div>
         </div>
 
-        <div class="box_step" v-if="step==4">
+        <div class="box_step" v-show="step==4">
             <div class="row">
                 <div class="col s12 m12 l8">
                     <h3 class="form__steps-title">Beneficiario Opcionais</h3>
@@ -214,7 +212,7 @@ $beneficios = array_map(function ($beneficio) {
                         </center>
                         <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
-                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
@@ -232,7 +230,7 @@ $beneficios = array_map(function ($beneficio) {
             </div>
         </div>
 
-        <div class="box_step" v-if="step==5">
+        <div class="box_step" v-show="step==5">
             <div class="row">
                 <div class="col s12 m12 l8">
                     <h3 class="form__steps-title">Adicionar Dependente</h3>
@@ -253,11 +251,11 @@ $beneficios = array_map(function ($beneficio) {
                             </div>
                             <div class="input-field col s6">
                                 <small>Dependente</small>
-                                <input type="date" v-model="dep.data" name="dep_data">
+                                <input type="date" v-model="dep.data" name="dep_data[]">
                             </div>
                             <div class="input-field col s6">
                                 <small>Seguro do Dependente</small>
-                                <select class="browser-default my_label" v-model="dep.beneficio" name="dep_beneficio">
+                                <select class="browser-default my_label" v-model="dep.beneficio" name="dep_beneficio[]">
                                     <option value="0" disabled selected>Beneficio</option>
                                     <option :value="be.id" v-for="be in beneficios">{{be.titulo}}</option>
                                 </select>
@@ -274,7 +272,7 @@ $beneficios = array_map(function ($beneficio) {
                         </center>
                         <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
-                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
@@ -292,7 +290,7 @@ $beneficios = array_map(function ($beneficio) {
             </div>
         </div>
 
-        <div class="box_step" v-if="step==6">
+        <div class="box_step" v-show="step==6">
             <div class="row">
                 <div class="col s12 m12 l8">
                     <h3 class="form__steps-title">Dados do Titular</h3>
@@ -308,7 +306,7 @@ $beneficios = array_map(function ($beneficio) {
                         </div>
                         <div class="input-field col s12 m12 l4">
                             <div for="">Data de Nascimento *</div>
-                            <input type="date" v-model="celular" name="celular">
+                            <input type="date" v-model="nascimento" name="nascimento">
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <div for="">Telefone *</div>
@@ -328,7 +326,7 @@ $beneficios = array_map(function ($beneficio) {
                         </center>
                         <div class="box_flex_s"> <strong>Plano Base</strong> <span>R${{plano_price}} / mês</span> </div>
                         <div class="box_flex_s linha-plano-base"><i></i><span>({{plano_title}})</span></div>
-                        <div class="box_flex_s"> <strong>{{beneficio_title}}</strong> <span>R${{beneficio_price}} / mês</span> </div>
+                        <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <small>+ R$60,00 de taxa de adesão (unica)</small>
@@ -346,8 +344,7 @@ $beneficios = array_map(function ($beneficio) {
             </div>
         </div>
 
-
-        <div class="box_step" v-if="step==7">
+        <div class="box_step" v-show="step==7">
             <div class="row">
                 <div class="col s12 m12 l12">
                     <br> <br>

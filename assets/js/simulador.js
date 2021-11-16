@@ -7,6 +7,8 @@ var app = new Vue({
         plano_id: 0,
         plano_title: '...',
         plano_price: '0,00',
+
+        urna_id: null,
         
         idade: '63 anos ou menos',
 
@@ -18,7 +20,8 @@ var app = new Vue({
             {
                 id: 0,
                 nome: null,
-                beneficio: null
+                beneficio: null,
+                data: null
             }
         ],
 
@@ -26,6 +29,7 @@ var app = new Vue({
         email: null,
         telefone: null,
         celular: null,
+        nascimento: null,
 
         total: '0,00',
 
@@ -36,7 +40,21 @@ var app = new Vue({
         ]
 
     },
+    watch: {
+        plano_price() { this.calc_total() },
+        beneficio_price() { this.calc_total() },
+    },
     methods: {
+        to_money(valor) {
+            return (valor / 100).toLocaleString('pt-br', { minimumFractionDigits: 2 })
+        },
+        calc_total() {
+            let plano_price = parseInt( this.plano_price.replace(/\D/,'') )
+            let beneficio_price = parseInt( this.beneficio_price.replace(/\D/,'') )
+            let soma = plano_price + beneficio_price
+            console.log(soma)
+            this.total = this.to_money(soma)
+        },
         nex() {
             if (this.step < 7) {
                 ++this.step
@@ -114,7 +132,7 @@ var app = new Vue({
     mounted() {
         this.planos = globalThis._planos
         this.beneficios = globalThis._beneficios
-
+        
 
         let backup = localStorage.getItem('simulador_tmp')
         if (backup) {
