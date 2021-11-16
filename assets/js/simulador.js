@@ -37,7 +37,9 @@ var app = new Vue({
             "63 anos ou menos",
             "69 a 74 anos",
             "80 anos ou mais",
-        ]
+        ],
+
+        mensagem: '...'
 
     },
     watch: {
@@ -53,6 +55,12 @@ var app = new Vue({
             let beneficio_price = parseInt( this.beneficio_price.replace(/\D/,'') )
             let soma = plano_price + beneficio_price
             this.total = this.to_money(soma)
+            console.log(soma)
+            if( soma < 6000 ) {
+                this.mensagem = 'No primeiro mês, pague somente a taxa de adesão no valor de R$ 60,00'
+            }else {
+                this.mensagem = '+ R$60,00 de taxa de adesão (unica)'
+            }
         },
         nex() {
             if (this.step < 7) {
@@ -125,6 +133,14 @@ var app = new Vue({
                 method: 'POST',
                 body: form
             } )
+        },
+        next_idade() {
+            if(this.idade == '80 anos ou mais') {
+                this.nex()
+                this.nex()
+                return null
+            }
+            this.nex()
         }
 
     },

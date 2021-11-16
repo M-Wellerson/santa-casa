@@ -53,7 +53,7 @@ $beneficios = array_map(function ($beneficio) {
             <div :class="{ativo: step => 1, item_step: true }"><i></i> <span class="steps__bar-text">Tipo <br> de Plano<span> </div>
             <div :class="{ativo: step > 1, item_step: true }"><i></i> <span class="steps__bar-text">Selecione <br> um Padrão<span> </div>
             <div :class="{ativo: step > 2, item_step: true }"><i></i> <span class="steps__bar-text">Idade do <br> Beneficiario<span> </div>
-            <div :class="{ativo: step > 3, item_step: true }"><i></i> <span class="steps__bar-text">Beneficiario <br> Opcionais<span> </div>
+            <div :class="{ativo: step > 3, item_step: true }"><i></i> <span class="steps__bar-text">Seguro <br> Opcional<span> </div>
             <div :class="{ativo: step > 4, item_step: true }"><i></i> <span class="steps__bar-text">Adicionar <br> Dependente<span> </div>
             <div :class="{ativo: step > 5, item_step: true }"><i></i> <span class="steps__bar-text">Dados <br> do Titular<span> </div>
         </div>
@@ -83,7 +83,7 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
-                        <small>+ R$60,00 de taxa de adesão (unica)</small>
+                        <i class="message-taxa">{{mensagem}}</i>
                     </div>
                     <button class="btn btn-contrate" @click="nex"> contrate esse plano</button>
                     <div class="control_step">
@@ -134,7 +134,7 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
-                        <small>+ R$60,00 de taxa de adesão (unica)</small>
+                        <i class="message-taxa">{{mensagem}}</i>
                     </div>
                     <button class="btn btn-contrate" @click="nex"> contrate esse plano</button>
                     <div class="control_step">
@@ -171,7 +171,7 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
-                        <small>+ R$60,00 de taxa de adesão (unica)</small>
+                        <i class="message-taxa">{{mensagem}}</i>
                     </div>
                     <button class="btn btn-contrate" @click="nex"> contrate esse plano</button>
                     <div class="control_step">
@@ -179,7 +179,7 @@ $beneficios = array_map(function ($beneficio) {
                             <span @click="prev">
                                 < </span>
                                     <div> Avança/Voltar </div>
-                                    <span @click="nex"> > </span>
+                                    <span @click="next_idade"> > </span>
                         </div>
                     </div>
                 </div>
@@ -189,7 +189,7 @@ $beneficios = array_map(function ($beneficio) {
         <div class="box_step" v-show="step==4">
             <div class="row">
                 <div class="col s12 m12 l8">
-                    <h3 class="form__steps-title">Beneficiario Opcionais</h3>
+                    <h3 class="form__steps-title">Deseja incluir seguro? </h3>
                     <hr>
                     <div class="row form__steps-body">
                         <label class="col s12" v-for="beneficio in beneficios">
@@ -215,7 +215,7 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
-                        <small>+ R$60,00 de taxa de adesão (unica)</small>
+                        <i class="message-taxa">{{mensagem}}</i>
                     </div>
                     <button class="btn btn-contrate" @click="nex"> contrate esse plano</button>
                     <div class="control_step">
@@ -275,7 +275,7 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
-                        <small>+ R$60,00 de taxa de adesão (unica)</small>
+                        <i class="message-taxa">{{mensagem}}</i>
                     </div>
                     <button class="btn btn-contrate" @click="nex"> contrate esse plano</button>
                     <div class="control_step">
@@ -329,7 +329,7 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong>Seguro</strong> <span>+R${{beneficio_price}} / mês</span> </div>
                         <div class="box_flex_s"> <strong>Total</strong> <span>R${{total}}</span> </div>
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
-                        <small>+ R$60,00 de taxa de adesão (unica)</small>
+                        <i class="message-taxa">{{mensagem}}</i>
                     </div>
                     <button class="btn btn-contrate btn-contrate-active" @click="finalizar"> contrate esse plano</button>
                     <div class="control_step">
