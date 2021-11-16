@@ -10,7 +10,7 @@ var app = new Vue({
 
         urna_id: null,
         
-        idade: '63 anos ou menos',
+        idade: null,
 
         beneficio_id: null,
         beneficio_title: 'Opcionais',
@@ -52,7 +52,6 @@ var app = new Vue({
             let plano_price = parseInt( this.plano_price.replace(/\D/,'') )
             let beneficio_price = parseInt( this.beneficio_price.replace(/\D/,'') )
             let soma = plano_price + beneficio_price
-            console.log(soma)
             this.total = this.to_money(soma)
         },
         nex() {
@@ -141,9 +140,7 @@ var app = new Vue({
             this.plano_id = backup.plano_id
             this.plano_title = backup.plano_title
             this.plano_price = backup.plano_price
-            this.dd = backup.dd
-            this.mm = backup.mm
-            this.aaaa = backup.aaaa
+            this.idade = backup.idade
             this.beneficio_id = backup.beneficio_id
             this.beneficio_title = backup.beneficio_title
             this.beneficio_price = backup.beneficio_price

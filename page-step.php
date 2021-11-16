@@ -107,18 +107,18 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="row form__steps-body">
                             <div class="js-simulador tab-catalogo active-tab galeria-caixao__form-steps-body">
                                 <div class="galeria-caixao galeria-caixao__form-steps">
-                                    <img id="foto_destaque-simulador" :src="planos[plano_id].urnas[0].imagem">
+                                    <img id="foto_destaque-simulador" :src="planos?.[plano_id]?.urnas?.[0]?.imagem">
                                     <br>
                                     <div class="form__steps-galery-photos">
-                                        <label v-for="urna in planos[plano_id].urnas" :class="{urna_active: urna_id == urna.id }">
+                                        <label v-for="urna in planos?.[plano_id]?.urnas" :class="{urna_active: urna_id == urna.id }">
                                             <input type="radio" name="urna_id" :value="urna.id" v-model="urna_id">
                                             <img  onclick="galeria(this, 'simulador')" :data-ref="'REF. ' + urna.ref " :src="urna.imagem">
                                         </label>
                                     </div>
                                 </div>
                                 <div>
-                                    <span id="foto_destaque-nome" class="legenda-padrao legenda-padrao-mb" > {{planos[plano_id].urnas[0].nome}} </span>
-                                    <span id="foto_ref-simulador" class="legenda-padrao" > REF. {{planos[plano_id].urnas[0].ref}}</span>
+                                    <span id="foto_destaque-nome" class="legenda-padrao legenda-padrao-mb" > {{planos?.[plano_id]?.urnas?.[0]?.nome}} </span>
+                                    <span id="foto_ref-simulador" class="legenda-padrao" > REF. {{planos?.[plano_id]?.urnas?.[0]?.ref}}</span>
                                 </div>
                             </div>
                         </div>
@@ -155,9 +155,9 @@ $beneficios = array_map(function ($beneficio) {
                     <h3 class="form__steps-title">Idade de Beneficiario</h3>
                     <hr>
                     <div class="row form__steps-body">
-                        <label class="col s6 " v-for="idade in idades" style="margin: 15px 0">
-                            <input type="radio" class="with-gap" name="idade_beneficiario" :value="idade" v-model="idade">
-                            <span class="radio-text"> {{idade}} </span>
+                        <label class="col s6 " v-for="i in idades" style="margin: 15px 0">
+                            <input type="radio" class="with-gap" name="idade_beneficiario" :value="i" v-model="idade">
+                            <span class="radio-text"> {{i}} </span>
                         </label>
                     </div>
                 </div>
