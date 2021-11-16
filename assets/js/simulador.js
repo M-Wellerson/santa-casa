@@ -21,7 +21,8 @@ var app = new Vue({
                 id: 0,
                 nome: null,
                 beneficio: null,
-                data: null
+                data: null,
+                taxa: "0,00"
             }
         ],
 
@@ -35,19 +36,50 @@ var app = new Vue({
 
         idades: [
             "até 59 anos",
-            "de 60 a 69",
-            "de 70 a 79",
-            "acima de 80",
+            "de 60 a 69 anos",
+            "de 70 a 79 anos",
+            "acima de 80 anos",
         ],
 
-        mensagem: '...'
+        mensagem: '...',
+        taxas: [],
 
     },
     watch: {
         plano_price() { this.calc_total() },
         beneficio_price() { this.calc_total() },
+        urna_id() { this.set_valor_urna() },
+        dependentes() {
+            // this.add_taxa_dependente()
+            // this.add_taxa_ao_total()
+        }
     },
     methods: {
+        render_taxas() {
+            this.add_taxa_dependente()
+            this.add_taxa_ao_total()
+        },
+        add_taxa_ao_total() {
+            let to_cents = this.taxas.map( t => parseInt( t.replace(/\D/,'') ) )
+            let total = parseInt( this.total.replace(/\D/,'') )
+            let calc_total = to_cents.reduce((acc,t) => {
+                acc = acc + t
+                return acc
+            }, 0)
+            this.total = this.to_money( calc_total + total )
+        },
+        faixa_idade(faixa) {
+            let lb = {
+                "até 59 anos": "ate_56_anos",
+                "de 60 a 69 anos": "de_60_a_69_anos",
+                "de 70 a 79 anos": "de_70_a_79_anos",
+                "acima de 80 anos": "acima_de_80",
+            }
+            return lb[faixa] || faixa
+        },
+        set_valor_urna() {
+            this.plano_price = (this.planos[this.plano_id].urnas.find(u => u.id == this.urna_id))[this.faixa_idade(this.idade)]
+        },
         to_money(valor) {
             return (valor / 100).toLocaleString('pt-br', { minimumFractionDigits: 2 })
         },
@@ -98,9 +130,7 @@ var app = new Vue({
                 plano_id: this.plano_id,
                 plano_title: this.plano_title,
                 plano_price: this.plano_price,
-                dd: this.dd,
-                mm: this.mm,
-                aaaa: this.aaaa,
+                idade: this.idade,
                 beneficio_id: this.beneficio_id,
                 beneficio_title: this.beneficio_title,
                 beneficio_price: this.beneficio_price,
@@ -109,12 +139,14 @@ var app = new Vue({
                 email: this.email,
                 telefone: this.telefone,
                 celular: this.celular,
+                urna_id: this.urna_id,
+                taxas: this.taxas,
             }
             localStorage.setItem('simulador_tmp', JSON.stringify(payload))
         },
         set_plano() {
             this.plano_title = this.planos[this.plano_id].titulo
-            this.plano_price = this.planos[this.plano_id].valor_do_plano
+            this.plano_price = "0,00"
         },
         set_beneficio() {
             let beneficio = this.beneficios.find(b => b.id == this.beneficio_id)
@@ -126,10 +158,10 @@ var app = new Vue({
             this.dependentes.push({
                 id: this.min_max(1, 99),
                 nome: null,
-                beneficio: null
+                beneficio: null,
+                data: null,
+                taxa: '0,00'
             })
-            console.log(this.dependentes)
-
         },
         remove_dependentes(id) {
             console.log(id)
@@ -144,13 +176,34 @@ var app = new Vue({
             localStorage.removeItem('simulador_tmp')
             window.location.reload()
         },
-        finalizar() {
+        async finalizar() {
             this.nex()
-            let form = new FormData(this.$refs.form_cadastro)
-            fetch('http://google.com.br', {
+            let path = `${globalThis._domain}/wp-json/api/salva-pedido`;
+            let res = await (await fetch(path, {
                 method: 'POST',
-                body: form
-            })
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    step: this.step,
+                    plano_id: this.plano_id,
+                    plano_title: this.plano_title,
+                    plano_price: this.plano_price,
+                    idade: this.idade,
+                    beneficio_id: this.beneficio_id,
+                    beneficio_title: this.beneficio_title,
+                    beneficio_price: this.beneficio_price,
+                    dependentes: this.dependentes,
+                    nome_titular: this.nome_titular,
+                    email: this.email,
+                    telefone: this.telefone,
+                    celular: this.celular,
+                    urna_id: this.urna_id,
+                    total: this.total,
+                    taxas: this.taxas,
+                })
+            })).json();
         },
         next_idade() {
             if (this.idade == 'acima de 80') {
@@ -159,6 +212,15 @@ var app = new Vue({
                 return null
             }
             this.nex()
+        },
+        add_taxa_dependente() {
+            this.taxas = this.dependentes.map( d => {
+                if(d.data) {
+                    let idade = this.get_idade(d.data)
+                    return this.taxa_dependente(idade)
+                }
+                return "0,00"
+            })
         }
     },
     mounted() {
@@ -184,6 +246,7 @@ var app = new Vue({
             this.email = backup.email
             this.telefone = backup.telefone
             this.celular = backup.celular
+            this.urna_id = backup.urna_id
         }
 
     }

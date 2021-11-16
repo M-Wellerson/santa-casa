@@ -46,8 +46,9 @@ $beneficios = array_map(function ($beneficio) {
 ?>
 
 <script>
-    globalThis._planos     = <?php echo json_encode($planos);  ?>;
+    globalThis._planos = <?php echo json_encode($planos);  ?>;
     globalThis._beneficios = <?php echo json_encode($beneficios);  ?>;
+    globalThis._domain = '<?php echo get_site_url();  ?>';
 </script>
 
 <?php get_header(); ?>
@@ -55,12 +56,12 @@ $beneficios = array_map(function ($beneficio) {
 <div id="simulador">
     <div class="full_step">
         <div :class="{content_step: true, ['progress_'+step]:true }">
-            <div :class="{ativo: step => 1, item_step: true }"><i></i> <span class="steps__bar-text">Tipo <br> de Plano<span> </div>
-            <div :class="{ativo: step > 1, item_step: true }"><i></i> <span class="steps__bar-text">Selecione <br> um Padrão<span> </div>
-            <div :class="{ativo: step > 2, item_step: true }"><i></i> <span class="steps__bar-text">Idade do <br> Beneficiario<span> </div>
-            <div :class="{ativo: step > 3, item_step: true }"><i></i> <span class="steps__bar-text">Seguro <br> Opcional<span> </div>
-            <div :class="{ativo: step > 4, item_step: true }"><i></i> <span class="steps__bar-text">Adicionar <br> Dependente<span> </div>
-            <div :class="{ativo: step > 5, item_step: true }"><i></i> <span class="steps__bar-text">Dados <br> do Titular<span> </div>
+            <div :class="{ativo: step => 1, item_step: true }"> <i></i> <span class="steps__bar-text"> Tipo <br> de Plano <span> </div>
+            <div :class="{ativo: step > 1, item_step: true }"> <i></i> <span class="steps__bar-text"> Idade do <br> Beneficiario <span> </div>
+            <div :class="{ativo: step > 2, item_step: true }"> <i></i> <span class="steps__bar-text"> Selecione <br> um Padrão <span> </div>
+            <div :class="{ativo: step > 3, item_step: true }"> <i></i> <span class="steps__bar-text"> Seguro <br> Opcional <span> </div>
+            <div :class="{ativo: step > 4, item_step: true }"> <i></i> <span class="steps__bar-text"> Adicionar <br> Dependente <span> </div>
+            <div :class="{ativo: step > 5, item_step: true }"> <i></i> <span class="steps__bar-text"> Dados <br> do Titular <span> </div>
         </div>
     </div>
 
@@ -106,27 +107,13 @@ $beneficios = array_map(function ($beneficio) {
         <div class="box_step" v-show="step==2">
             <div class="row">
                 <div class="col s12 m12 l8">
-                    <h3 class="form__steps-title">Selecione um Padrão</h3>
-                    <hr> <br>
+                    <h3 class="form__steps-title">Idade de Beneficiario</h3>
+                    <hr>
                     <div class="row form__steps-body">
-                        <div class="row form__steps-body">
-                            <div class="js-simulador tab-catalogo active-tab galeria-caixao__form-steps-body">
-                                <div class="galeria-caixao galeria-caixao__form-steps">
-                                    <img id="foto_destaque-simulador" :src="planos?.[plano_id]?.urnas?.[0]?.imagem">
-                                    <br>
-                                    <div class="form__steps-galery-photos">
-                                        <label v-for="urna in planos?.[plano_id]?.urnas" :class="{urna_active: urna_id == urna.id }">
-                                            <input type="radio" name="urna_id" :value="urna.id" v-model="urna_id">
-                                            <img  onclick="galeria(this, 'simulador')" :data-ref="'REF. ' + urna.ref " :src="urna.imagem">
-                                        </label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <span id="foto_destaque-nome" class="legenda-padrao legenda-padrao-mb" > {{planos?.[plano_id]?.urnas?.[0]?.nome}} </span>
-                                    <span id="foto_ref-simulador" class="legenda-padrao" > REF. {{planos?.[plano_id]?.urnas?.[0]?.ref}}</span>
-                                </div>
-                            </div>
-                        </div>
+                        <label class="col s6 " v-for="i in idades" style="margin: 15px 0">
+                            <input type="radio" class="with-gap" name="idade_beneficiario" :value="i" v-model="idade">
+                            <span class="radio-text"> {{i}} </span>
+                        </label>
                     </div>
                 </div>
                 <div class="col s12 m12 l4 center-align">
@@ -157,13 +144,27 @@ $beneficios = array_map(function ($beneficio) {
         <div class="box_step" v-show="step==3">
             <div class="row">
                 <div class="col s12 m12 l8">
-                    <h3 class="form__steps-title">Idade de Beneficiario</h3>
-                    <hr>
+                    <h3 class="form__steps-title">Selecione um Padrão</h3>
+                    <hr> <br>
                     <div class="row form__steps-body">
-                        <label class="col s6 " v-for="i in idades" style="margin: 15px 0">
-                            <input type="radio" class="with-gap" name="idade_beneficiario" :value="i" v-model="idade">
-                            <span class="radio-text"> {{i}} </span>
-                        </label>
+                        <div class="row form__steps-body">
+                            <div class="js-simulador tab-catalogo active-tab galeria-caixao__form-steps-body">
+                                <div class="galeria-caixao galeria-caixao__form-steps">
+                                    <img id="foto_destaque-simulador" :src="planos?.[plano_id]?.urnas?.[0]?.imagem">
+                                    <br>
+                                    <div class="form__steps-galery-photos">
+                                        <label v-for="urna in planos?.[plano_id]?.urnas" :class="{urna_active: urna_id == urna.id }">
+                                            <input type="radio" name="urna_id" :value="urna.id" v-model="urna_id">
+                                            <img onclick="galeria(this, 'simulador')" :data-ref="'REF. ' + urna.ref " :src="urna.imagem">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span id="foto_destaque-nome" class="legenda-padrao legenda-padrao-mb"> {{planos?.[plano_id]?.urnas?.[0]?.nome}} </span>
+                                    <span id="foto_ref-simulador" class="legenda-padrao"> REF. {{planos?.[plano_id]?.urnas?.[0]?.ref}}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col s12 m12 l4 center-align">
@@ -190,6 +191,7 @@ $beneficios = array_map(function ($beneficio) {
                 </div>
             </div>
         </div>
+
 
         <div class="box_step" v-show="step==4">
             <div class="row">
@@ -256,7 +258,7 @@ $beneficios = array_map(function ($beneficio) {
                             </div>
                             <div class="input-field col s6">
                                 <small>Dependente</small>
-                                <input type="date" v-model="dep.data" name="dep_data[]">
+                                <input type="date" v-model="dep.data" @blur="render_taxas" name="dep_data[]">
                             </div>
                             <div class="input-field col s6">
                                 <small>Seguro do Dependente</small>
@@ -321,7 +323,7 @@ $beneficios = array_map(function ($beneficio) {
                             <div for="">Celular</div>
                             <input type="text" v-model="celular" name="celular">
                         </div>
-                       
+
                     </div>
                 </div>
                 <div class="col s12 m12 l4 center-align">
@@ -364,7 +366,7 @@ $beneficios = array_map(function ($beneficio) {
                     <a class="link-center" href="javascript:void(0)" @click="voltar">
                         voltar
                     </a>
-                    
+
 
                 </div>
 
