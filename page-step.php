@@ -17,10 +17,15 @@ $planos = array_map(function ($plano) {
     $fields['urnas'] = array_map(function ($urna) {
         $fieldsUrnas = get_fields($urna->ID);
         return [
-            "imagem" => $fieldsUrnas['foto_da_urna'],
-            "nome"   => $fieldsUrnas['nome_da_urna'],
-            "id"     => $urna->ID,
-            "ref"    => $fieldsUrnas['referencia'],
+            "imagem"          => $fieldsUrnas['foto_da_urna'],
+            "nome"            => $fieldsUrnas['nome_da_urna'],
+            "id"              => $urna->ID,
+            "ref"             => $fieldsUrnas['referencia'],
+            "ate_56_anos"     => $fieldsUrnas['ate_56_anos'],
+            "de_60_a_69_anos" => $fieldsUrnas['de_60_a_69_anos'],
+            "de_60_a_69_anos" => $fieldsUrnas['de_60_a_69_anos'],
+            "de_70_a_79_anos" => $fieldsUrnas['de_60_a_69_anos'],
+            "acima_de_80"     => $fieldsUrnas['de_60_a_69_anos'],
         ];
     }, $fields['urnas']);
     return $fields;
