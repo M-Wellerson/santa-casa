@@ -18,9 +18,9 @@ $planos = array_map(function ($plano) {
         $fieldsUrnas = get_fields($urna->ID);
         return [
             "imagem" => $fieldsUrnas['foto_da_urna'],
-            "nome"  => $fieldsUrnas['nome_da_urna'],
-            "id"    => $urna->ID,
-            "ref"   => $fieldsUrnas['referencia'],
+            "nome"   => $fieldsUrnas['nome_da_urna'],
+            "id"     => $urna->ID,
+            "ref"    => $fieldsUrnas['referencia'],
         ];
     }, $fields['urnas']);
     return $fields;
@@ -41,7 +41,7 @@ $beneficios = array_map(function ($beneficio) {
 ?>
 
 <script>
-    globalThis._planos = <?php echo json_encode($planos);  ?>;
+    globalThis._planos     = <?php echo json_encode($planos);  ?>;
     globalThis._beneficios = <?php echo json_encode($beneficios);  ?>;
 </script>
 

@@ -150,3 +150,17 @@ function open_tab_catalogo(el, base) {
     el.classList.add('active')
     document.querySelector(`.js-${base}`).classList.add('active-tab')
 }
+
+
+async function salvarPedido() {
+    let path = `${window.location.protocol}//${window.location.hostname}/regularswitch/santa-casa/wp-json/api/salva-pedido`;
+    let res  = await (await fetch(path, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ a: 1, b: 'Textual content' })
+    })).json();
+}
+salvarPedido()
