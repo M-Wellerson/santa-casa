@@ -265,7 +265,7 @@ $beneficios = array_map(function ($beneficio) {
                             </div>
                             <div class="input-field col s6">
                                 <small>Seguro do Dependente</small>
-                                <select class="browser-default my_label" v-model="dep.beneficio" @blur="render_taxas" name="dep_beneficio[]">
+                                <select class="browser-default my_label" v-model="dep.beneficio" @change="render_taxas" name="dep_beneficio[]">
                                     <option value="0" disabled selected>Beneficio</option>
                                     <option :value="be.id" v-for="be in beneficios">{{be.titulo}}</option>
                                 </select>

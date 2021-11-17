@@ -59,6 +59,7 @@ var app = new Vue({
     },
     methods: {
         render_taxas() {
+            this.calc_total()
             this.add_taxa_dependente()
             this.add_taxa_ao_total()
 
