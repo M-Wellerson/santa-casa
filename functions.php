@@ -41,39 +41,31 @@ include __DIR__ . "/api/salva-pedido.php";
 
 function wporg_custom_box_html($post)
 {
-    // var_dump($post);
-?>
-    <div>
+    $postMetas   = get_post_meta($post->ID);
+    $dependentes = $postMetas['dependentes'];
+    $metaJson    = json_decode($dependentes[0]);
+    
+    foreach ($metaJson as $meta => $value) {
+        $PlanoName   = get_post($value->beneficio);
+        echo '
         <div>
-            <span><strong>Nome</strong></span>
-            <span class="denp_nome">Marcos</span>
+            <div>
+                <span><strong>Nome</strong></span>
+                <span class="denp_nome">'. $value->nome .'</span>
+            </div>
+            <div>
+                <span><strong>Plano:</strong></span>
+                <span>'. $PlanoName->post_title .'</span>
+            </div>
+            <div>
+                <span><strong>Data de Nascimento:</strong></span>
+                <span>'. $value->data .'</span>
+            </div>
         </div>
-        <div>
-            <span><strong>Plano:</strong></span>
-            <span>Plano 1</span>
-        </div>
-        <div>
-            <span><strong>Data de Nascimento:</strong></span>
-            <span>12/12/12</span>
-        </div>
-    </div>
-    <br/>
-    <br/>
-    <div>
-        <div>
-            <span><strong>Nome</strong></span>
-            <span class="denp_nome">Marcos</span>
-        </div>
-        <div>
-            <span><strong>Plano:</strong></span>
-            <span>Plano 1</span>
-        </div>
-        <div>
-            <span><strong>Data de Nascimento:</strong></span>
-            <span>12/12/12</span>
-        </div>
-    </div>
-<?php
+        </br>
+        </br>
+        ';
+    }
 }
 
 function wporg_add_custom_box()

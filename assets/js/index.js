@@ -150,6 +150,3 @@ function open_tab_catalogo(el, base) {
     el.classList.add('active')
     document.querySelector(`.js-${base}`).classList.add('active-tab')
 }
-
-
-
