@@ -91,7 +91,7 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <i class="message-taxa">{{mensagem}}</i>
                     </div>
-                    <button class="btn btn-contrate" @click="nex">contrate esse plano</button>
+                    <button class="btn btn-contrate">contrate esse plano</button>
                     <div class="control_step">
                         <div class="control_step_buttons">
                             <span class="row" @click="prev"> <div style="font-size: 28px; font-weight: 400;" class="col s6"><</div> <div class="col s6">VOLTAR</div> </span>
@@ -129,11 +129,11 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <i class="message-taxa">{{mensagem}}</i>
                     </div>
-                    <button class="btn btn-contrate" @click="nex"> contrate esse plano</button>
+                    <button class="btn btn-contrate"> contrate esse plano</button>
                     <div class="control_step">
                         <div class="control_step_buttons">
                             <span class="row" @click="prev"> <div style="font-size: 28px; font-weight: 400;" class="col s6"><</div> <div class="col s6">VOLTAR</div> </span>
-                            <span class="row" @click="nex('step_1')"> <div class="col s6">AVANÇAR</div> <div style="font-size: 28px; font-weight: 400;" class="col s6">></div> </span>
+                            <span class="row" @click="nex('step_2')"> <div class="col s6">AVANÇAR</div> <div style="font-size: 28px; font-weight: 400;" class="col s6">></div> </span>
                         </div>
                         <span class="error-step" v-show="error != null">
                             {{error}}
@@ -181,11 +181,11 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <i class="message-taxa">{{mensagem}}</i>
                     </div>
-                    <button class="btn btn-contrate" @click="nex"> contrate esse plano</button>
+                    <button class="btn btn-contrate"> contrate esse plano</button>
                     <div class="control_step">
                         <div class="control_step_buttons">
                             <span class="row" @click="prev"> <div style="font-size: 28px; font-weight: 400;" class="col s6"><</div> <div class="col s6">VOLTAR</div> </span>
-                            <span class="row" @click="nex('step_1')"> <div class="col s6">AVANÇAR</div> <div style="font-size: 28px; font-weight: 400;" class="col s6">></div> </span>
+                            <span class="row" @click="next_idade('step_3')"> <div class="col s6">AVANÇAR</div> <div style="font-size: 28px; font-weight: 400;" class="col s6">></div> </span>
                         </div>
                         <span class="error-step" v-show="error != null">
                             {{error}}
@@ -226,11 +226,11 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <i class="message-taxa">{{mensagem}}</i>
                     </div>
-                    <button class="btn btn-contrate" @click="nex"> contrate esse plano</button>
+                    <button class="btn btn-contrate"> contrate esse plano</button>
                     <div class="control_step">
                         <div class="control_step_buttons">
                             <span class="row" @click="prev"> <div style="font-size: 28px; font-weight: 400;" class="col s6"><</div> <div class="col s6">VOLTAR</div> </span>
-                            <span class="row" @click="nex('step_1')"> <div class="col s6">AVANÇAR</div> <div style="font-size: 28px; font-weight: 400;" class="col s6">></div> </span>
+                            <span class="row" @click="nex"> <div class="col s6">AVANÇAR</div> <div style="font-size: 28px; font-weight: 400;" class="col s6">></div> </span>
                         </div>
                         <span class="error-step" v-show="error != null">
                             {{error}}
@@ -265,7 +265,7 @@ $beneficios = array_map(function ($beneficio) {
                             </div>
                             <div class="input-field col s6">
                                 <small>Seguro do Dependente</small>
-                                <select class="browser-default my_label" v-model="dep.beneficio" name="dep_beneficio[]">
+                                <select class="browser-default my_label" v-model="dep.beneficio" @blur="render_taxas" name="dep_beneficio[]">
                                     <option value="0" disabled selected>Beneficio</option>
                                     <option :value="be.id" v-for="be in beneficios">{{be.titulo}}</option>
                                 </select>
@@ -291,7 +291,7 @@ $beneficios = array_map(function ($beneficio) {
                     <div class="control_step">
                         <div class="control_step_buttons">
                             <span class="row" @click="prev"> <div style="font-size: 28px; font-weight: 400;" class="col s6"><</div> <div class="col s6">VOLTAR</div> </span>
-                            <span class="row" @click="nex('step_1')"> <div class="col s6">AVANÇAR</div> <div style="font-size: 28px; font-weight: 400;" class="col s6">></div> </span>
+                            <span class="row" @click="nex"> <div class="col s6">AVANÇAR</div> <div style="font-size: 28px; font-weight: 400;" class="col s6">></div> </span>
                         </div>
                         <span class="error-step" v-show="error != null">
                             {{error}}
@@ -342,14 +342,15 @@ $beneficios = array_map(function ($beneficio) {
                         <i class="message-taxa">{{mensagem}}</i>
                     </div>
                     <button class="btn btn-contrate btn-contrate-active" @click="finalizar('step_6')"> contrate esse plano</button>
+                    <span class="error-step" v-show="error != null">
+                        {{error}}
+                    </span>
                     <div class="control_step">
                         <div class="control_step_buttons">
                             <span class="row" @click="prev"> <div style="font-size: 28px; font-weight: 400;" class="col s6"><</div> <div class="col s6">VOLTAR</div> </span>
-                            <span class="row" @click="nex('step_1')"> <div class="col s6">AVANÇAR</div> <div style="font-size: 28px; font-weight: 400;" class="col s6">></div> </span>
+                            <span class="row control_step_buttons-desable" > <div class="col s6">AVANÇAR</div> <div style="font-size: 28px; font-weight: 400;" class="col s6">></div> </span>
                         </div>
-                        <span class="error-step" v-show="error != null">
-                            {{error}}
-                        </span>
+                       
                     </div>
                 </div>
             </div>
