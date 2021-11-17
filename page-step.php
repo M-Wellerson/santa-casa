@@ -97,8 +97,11 @@ $beneficios = array_map(function ($beneficio) {
                             <span @click="prev">
                                 < </span>
                                     <div> Avança/Voltar </div>
-                                    <span @click="nex"> > </span>
+                                    <span @click="nex('step_1')"> > </span>
                         </div>
+                        <span class="error-step" v-show="error != null">
+                            {{error}}
+                        </span>
                     </div>
                 </div>
             </div>
@@ -134,8 +137,11 @@ $beneficios = array_map(function ($beneficio) {
                             <span @click="prev">
                                 < </span>
                                     <div> Avança/Voltar </div>
-                                    <span @click="nex"> > </span>
+                                    <span @click="nex('step_2')"> > </span>
                         </div>
+                        <span class="error-step" v-show="error != null">
+                            {{error}}
+                        </span>
                     </div>
                 </div>
             </div>
@@ -185,13 +191,15 @@ $beneficios = array_map(function ($beneficio) {
                             <span @click="prev">
                                 < </span>
                                     <div> Avança/Voltar </div>
-                                    <span @click="next_idade"> > </span>
+                                    <span @click="next_idade('step_3')"> > </span>
                         </div>
+                        <span class="error-step" v-show="error != null">
+                            {{error}}
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <div class="box_step" v-show="step==4">
             <div class="row">
@@ -232,6 +240,9 @@ $beneficios = array_map(function ($beneficio) {
                                     <div> Avança/Voltar </div>
                                     <span @click="nex"> > </span>
                         </div>
+                        <span class="error-step" v-show="error != null">
+                            {{error}}
+                        </span>
                     </div>
                 </div>
             </div>
@@ -292,6 +303,9 @@ $beneficios = array_map(function ($beneficio) {
                                     <div> Avança/Voltar </div>
                                     <span @click="nex"> > </span>
                         </div>
+                        <span class="error-step" v-show="error != null">
+                            {{error}}
+                        </span>
                     </div>
                 </div>
             </div>
@@ -320,10 +334,9 @@ $beneficios = array_map(function ($beneficio) {
                             <input type="text" v-model="telefone" name="telefone" required>
                         </div>
                         <div class="input-field col s12 m12 l6">
-                            <div for="">Celular</div>
-                            <input type="text" v-model="celular" name="celular">
+                            <div for="">Celular *</div>
+                            <input type="text" v-model="celular" name="celular" >
                         </div>
-
                     </div>
                 </div>
                 <div class="col s12 m12 l4 center-align">
@@ -338,14 +351,16 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <i class="message-taxa">{{mensagem}}</i>
                     </div>
-                    <button class="btn btn-contrate btn-contrate-active" @click="finalizar"> contrate esse plano</button>
+                    <button class="btn btn-contrate btn-contrate-active" @click="finalizar('step_6')"> contrate esse plano</button>
                     <div class="control_step">
                         <div class="control_step_buttons">
-                            <span @click="prev">
-                                < </span>
-                                    <div> Avança/Voltar </div>
-                                    <span @click="nex"> > </span>
+                            <span @click="prev"> &#60; </span>
+                            <div> Avança/Voltar </div>
+                            <span > &#62; </span>
                         </div>
+                        <span class="error-step" v-show="error != null">
+                            {{error}}
+                        </span>
                     </div>
                 </div>
             </div>
