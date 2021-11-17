@@ -76,7 +76,7 @@
 
 .control_step_buttons {
     display: grid;
-    grid-template-columns: 55px 1fr 55px;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-items: center;
     text-align: center;
@@ -88,23 +88,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #0055C8;
+    background-color: #15bedd;
     width: 100%;
-    height: 50px;
+    height: 40px;
     color: #FFF;
-    font-size: 18px;
+    font-weight: bold;
+    font-size: 14px;
     cursor: pointer;
 }
 
 .control_step_buttons span:hover {
-    filter: brightness(150%);
+    filter: brightness(110%);
 }
 
 .control_step_buttons span:first-child {
+    background-color: #9b9b9b;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
-.control_step_buttons span:nth-child(3) {
+.control_step_buttons span:nth-child(2) {
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
 }
@@ -167,7 +169,7 @@
 
 .btn-contrate:hover {
     background-color: #7a7979;
-    filter: brightness(130%);
+    filter: brightness(110%);
 }
 
 .galeria-caixao__form-steps {
@@ -297,11 +299,12 @@
 }
 
 .btn-contrate-active {
-    background-color: #131d54;
+    background-color: #15bedd;
 }
 
 .btn-contrate-active:hover {
-    background-color: #080f36;
+    filter: brightness(110%);
+    background-color: #15bedd;
 }
 
 .legenda-padrao {

@@ -3,7 +3,6 @@
 function deletar_prod(WP_REST_Request $request)
 {
     $fieldsUrnas = get_fields($request['urna_id']);
-    var_dump($request['plano_title']);
     $my_post = array(
         'post_type'    => 'pedido',
         'post_title'   => wp_strip_all_tags($request['title']),
@@ -14,7 +13,8 @@ function deletar_prod(WP_REST_Request $request)
             'plano_id'          => $request['plano_id'],
             'nome_do_plano'     => $request['plano_title'],
             'valor_do_plano'    => $request['plano_price'],
-            'urna_escolhida'    => $fieldsUrnas['foto_da_urna'],
+            'urna'              => $fieldsUrnas['nome_da_urna'],
+            'referencia_urna'   => $fieldsUrnas['referencia'],
             'beneficio_id'      => $request['beneficio_id'],
             'nome_do_beneficio' => $request['beneficio_title'],
             'valor_beneficio'   => $request['beneficio_price'],

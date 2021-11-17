@@ -4,8 +4,8 @@ var app = new Vue({
         step: 1,
         planos: [],
         beneficios: [],
-        plano_id: null,
-        plano_title: '',
+        plano_id: 0,
+        plano_title: '...',
         plano_price: '0,00',
 
         urna_id: null,
@@ -41,10 +41,8 @@ var app = new Vue({
             "acima de 80 anos",
         ],
 
-        mensagem: '',
+        mensagem: '...',
         taxas: [],
-
-        error: null,
 
     },
     watch: {
@@ -111,20 +109,13 @@ var app = new Vue({
             if (soma < 6000) {
                 this.mensagem = 'No primeiro mês, pague somente a taxa de adesão no valor de R$ 60,00'
             } else {
-                this.mensagem = ''
+                this.mensagem = '+ R$60,00 de taxa de adesão (unica)'
             }
         },
-        nex( valid = null ) {
-            let default_go = () => ({next: true, message: null})
-            let lets_go = this?.[valid]?.() || default_go()
-            if( !lets_go.next )  {
-                this.error = lets_go.message
-                return null
-            }            
+        nex() {
             if (this.step < 7) {
                 ++this.step
             }
-            this.error = null
             this.update()
         },
         prev() {
@@ -185,8 +176,8 @@ var app = new Vue({
             localStorage.removeItem('simulador_tmp')
             window.location.reload()
         },
-        async finalizar(go = null) {
-            this.nex(go)
+        async finalizar() {
+            this.nex()
             let path = `${globalThis._domain}/wp-json/api/salva-pedido`;
             let res = await (await fetch(path, {
                 method: 'POST',
@@ -214,13 +205,13 @@ var app = new Vue({
                 })
             })).json();
         },
-        next_idade( go = null ) {
+        next_idade() {
             if (this.idade == 'acima de 80') {
-                this.nex(go)
+                this.nex()
                 this.nex()
                 return null
             }
-            this.nex(go)
+            this.nex()
         },
         add_taxa_dependente() {
             this.taxas = this.dependentes.map( d => {
@@ -230,46 +221,6 @@ var app = new Vue({
                 }
                 return "0,00"
             })
-        },
-        step_1(){
-            let next = this.plano_id != null
-            return {
-                next,
-                message: 'escolha um plano'
-            }
-        },
-        step_2(){
-            let next = this.idade != null
-            return {
-                next,
-                message: 'escolha um idade'
-            }
-        },
-        step_3(){
-            let next = this.urna_id != null
-            return {
-                next,
-                message: 'escolha um urna'
-            }
-        },
-        step_4(){
-            let next = this.beneficio_id != null
-            return {
-                next,
-                message: 'escolha um beneficio'
-            }
-        },
-        step_6(){
-            let nome_titular = this.nome_titular != null
-            let email = this.email != null
-            let telefone = this.telefone != null
-            let celular = this.celular != null
-            let nascimento = this.nascimento != null
-            let next = nome_titular && email && telefone && celular && nascimento
-            return {
-                next,
-                message: 'Preencha todos os dados'
-            }
         }
     },
     mounted() {
@@ -296,7 +247,6 @@ var app = new Vue({
             this.telefone = backup.telefone
             this.celular = backup.celular
             this.urna_id = backup.urna_id
-            this.taxas = backup.taxas
         }
 
     }
