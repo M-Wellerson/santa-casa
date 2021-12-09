@@ -55,6 +55,9 @@ var app = new Vue({
         dependentes() {
             // this.add_taxa_dependente()
             // this.add_taxa_ao_total()
+        },
+        idade() {
+            this.plano_price = (this.planos[this.plano_id].urnas.find(u => u.id == this.urna_id))[this.faixa_idade(this.idade)]
         }
     },
     methods: {
@@ -70,22 +73,22 @@ var app = new Vue({
 
         },
         add_taxa_ao_total() {
-            let to_cents = this.taxas.map( t => parseInt( t.replace(/\D/,'') ) )
-            let total = parseInt( this.total.replace(/\D/,'') )
-            let calc_total = to_cents.reduce((acc,t) => {
+            let to_cents = this.taxas.map(t => parseInt(t.replace(/\D/, '')))
+            let total = parseInt(this.total.replace(/\D/, ''))
+            let calc_total = to_cents.reduce((acc, t) => {
                 acc = acc + t
                 return acc
             }, 0)
-            this.total = this.to_money( calc_total + total )
+            this.total = this.to_money(calc_total + total)
         },
         add_seguro_ao_total() {
-            let to_cents = this.seguros.map( t => parseInt( t.replace(/\D/,'') ) )
-            let total = parseInt( this.total.replace(/\D/,'') )
-            let calc_total = to_cents.reduce((acc,t) => {
+            let to_cents = this.seguros.map(t => parseInt(t.replace(/\D/, '')))
+            let total = parseInt(this.total.replace(/\D/, ''))
+            let calc_total = to_cents.reduce((acc, t) => {
                 acc = acc + t
                 return acc
             }, 0)
-            this.total = this.to_money( calc_total + total )
+            this.total = this.to_money(calc_total + total)
         },
         faixa_idade(faixa) {
             let lb = {
@@ -132,13 +135,13 @@ var app = new Vue({
                 this.mensagem = ''
             }
         },
-        nex( valid = null ) {
-            let default_go = () => ({next: true, message: null})
+        nex(valid = null) {
+            let default_go = () => ({ next: true, message: null })
             let lets_go = this?.[valid]?.() || default_go()
-            if( !lets_go.next )  {
+            if (!lets_go.next) {
                 this.error = lets_go.message
                 return null
-            }            
+            }
             if (this.step < 7) {
                 ++this.step
             }
@@ -236,7 +239,7 @@ var app = new Vue({
                 })
             })).json();
         },
-        next_idade( go = null ) {
+        next_idade(go = null) {
             if (this.idade == 'acima de 80') {
                 this.nex(go)
                 this.nex()
@@ -245,8 +248,8 @@ var app = new Vue({
             this.nex(go)
         },
         add_taxa_dependente() {
-            this.taxas = this.dependentes.map( d => {
-                if(d.data) {
+            this.taxas = this.dependentes.map(d => {
+                if (d.data) {
                     let idade = this.get_idade(d.data)
                     return this.taxa_dependente(idade)
                 }
@@ -254,54 +257,54 @@ var app = new Vue({
             })
         },
         add_valor_seguro_dependente() {
-            this.dependentes = this.dependentes.map( valor => {
-                let valorSeguro    = this.beneficios.find( seguro => seguro.id == valor?.beneficio )?.valor_mensal;
+            this.dependentes = this.dependentes.map(valor => {
+                let valorSeguro = this.beneficios.find(seguro => seguro.id == valor?.beneficio)?.valor_mensal;
                 valor.valor_seguro = valorSeguro;
-                let idade  = this.get_idade( valor.data );
+                let idade = this.get_idade(valor.data);
                 valor.taxa = this.taxa_dependente(idade);
                 return valor;
-            } );
+            });
         },
         get_price_beneficio(id) {
-            return this.beneficios.find( b => b.id == id ).valor_mensal
+            return this.beneficios.find(b => b.id == id).valor_mensal
         },
         add_seguro_dependente() {
-            this.seguros = this.dependentes.map( d => {
-                if(d.beneficio) {
+            this.seguros = this.dependentes.map(d => {
+                if (d.beneficio) {
                     return this.get_price_beneficio(d.beneficio)
                 }
                 return "0,00"
             })
         },
-        step_1(){
+        step_1() {
             let next = this.plano_id != null
             return {
                 next,
                 message: 'escolha um plano'
             }
         },
-        step_2(){
+        step_2() {
             let next = this.idade != null
             return {
                 next,
                 message: 'escolha um idade'
             }
         },
-        step_3(){
+        step_3() {
             let next = this.urna_id != null
             return {
                 next,
                 message: 'escolha um urna'
             }
         },
-        step_4(){
+        step_4() {
             let next = this.beneficio_id != null
             return {
                 next,
                 message: 'escolha um beneficio'
             }
         },
-        step_6(){
+        step_6() {
             let nome_titular = this.nome_titular != null
             let email = this.email != null
             let telefone = this.telefone != null
