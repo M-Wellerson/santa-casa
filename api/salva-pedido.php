@@ -5,7 +5,7 @@ function deletar_prod(WP_REST_Request $request)
     $fieldsUrnas = get_fields($request['urna_id']);
     $my_post = array(
         'post_type'    => 'pedido',
-        'post_title'   => wp_strip_all_tags($request['title']),
+        'post_title'   => wp_strip_all_tags(rand( 10000, 99999)),
         'post_content' => 'Pedido',
         'post_status'  => 'publish',
         'post_author'  => 1,
@@ -26,6 +26,7 @@ function deletar_prod(WP_REST_Request $request)
             'celular'           => $request['celular'],
             'total'             => $request['total'],
             'taxas'             => $request['taxas'],
+            'valor_seguro'      => $request['valor_seguro'],
         ],
     );
 
@@ -46,7 +47,7 @@ add_action(
             "api",
             "/salva-pedido",
             [
-                "methods"   => WP_REST_SERVER::CREATABLE,
+                "methods"  => WP_REST_SERVER::CREATABLE,
                 "callback" => "deletar_prod"
             ]
         );

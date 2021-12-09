@@ -65,6 +65,9 @@ var app = new Vue({
 
             this.add_seguro_dependente()
             this.add_seguro_ao_total()
+
+            this.add_valor_seguro_dependente();
+
         },
         add_taxa_ao_total() {
             let to_cents = this.taxas.map( t => parseInt( t.replace(/\D/,'') ) )
@@ -95,6 +98,7 @@ var app = new Vue({
         },
         set_valor_urna() {
             this.plano_price = (this.planos[this.plano_id].urnas.find(u => u.id == this.urna_id))[this.faixa_idade(this.idade)]
+            console.log((this.planos[this.plano_id].urnas.find(u => u.id == this.urna_id)))
         },
         to_money(valor) {
             return (valor / 100).toLocaleString('pt-br', { minimumFractionDigits: 2 })
@@ -184,7 +188,8 @@ var app = new Vue({
                 nome: null,
                 beneficio: null,
                 data: null,
-                taxa: '0,00'
+                taxa: '0,00',
+                valor_seguro: '0,00'
             })
         },
         remove_dependentes(id) {
@@ -248,6 +253,15 @@ var app = new Vue({
                 return "0,00"
             })
         },
+        add_valor_seguro_dependente() {
+            this.dependentes = this.dependentes.map( valor => {
+                let valorSeguro    = this.beneficios.find( seguro => seguro.id == valor?.beneficio )?.valor_mensal;
+                valor.valor_seguro = valorSeguro;
+                let idade  = this.get_idade( valor.data );
+                valor.taxa = this.taxa_dependente(idade);
+                return valor;
+            } );
+        },
         get_price_beneficio(id) {
             return this.beneficios.find( b => b.id == id ).valor_mensal
         },
@@ -306,7 +320,6 @@ var app = new Vue({
 
         this.get_idade('1987-09-18')
 
-
         let backup = localStorage.getItem('simulador_tmp')
         if (backup) {
             backup = JSON.parse(backup)
@@ -327,6 +340,5 @@ var app = new Vue({
             this.taxas = backup.taxas
             this.seguros = backup.seguros
         }
-
     }
 })

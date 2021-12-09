@@ -23,9 +23,8 @@ $planos = array_map(function ($plano) {
             "ref"             => $fieldsUrnas['referencia'],
             "ate_56_anos"     => $fieldsUrnas['ate_56_anos'],
             "de_60_a_69_anos" => $fieldsUrnas['de_60_a_69_anos'],
-            "de_60_a_69_anos" => $fieldsUrnas['de_60_a_69_anos'],
-            "de_70_a_79_anos" => $fieldsUrnas['de_60_a_69_anos'],
-            "acima_de_80"     => $fieldsUrnas['de_60_a_69_anos'],
+            "de_70_a_79_anos" => $fieldsUrnas['de_70_a_79_anos'],
+            "acima_de_80"     => $fieldsUrnas['acima_de_80'],
         ];
     }, $fields['urnas']);
     return $fields;

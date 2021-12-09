@@ -61,6 +61,14 @@ function wporg_custom_box_html($post)
                 <span><strong>Data de Nascimento:</strong></span>
                 <span>'. $value->data .'</span>
             </div>
+            <div>
+                <span><strong>taxa:</strong></span>
+                <span>'. $value->taxa .'</span>
+            </div>
+            <div>
+                <span><strong>Valor Seguro:</strong></span>
+                <span>'. $value->valor_seguro .'</span>
+            </div>
         </div>
         </br>
         </br>
