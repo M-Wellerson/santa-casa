@@ -17,6 +17,7 @@
     <script src="<?= get_template_directory_uri() ?>/assets/js/library/materialize.min.js" defer></script>
     <script src="<?= get_template_directory_uri() ?>/assets/js/index.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js" defer></script>
+    <script src="<?= get_template_directory_uri() ?>/assets/js/mascDate.js" defer></script>
     <script src="<?= get_template_directory_uri() ?>/assets/js/simulador.js" defer></script>
 </head>
 

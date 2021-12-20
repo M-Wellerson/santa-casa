@@ -200,7 +200,18 @@ $beneficios = array_map(function ($beneficio) {
                     <h3 class="form__steps-title">Deseja incluir seguro? </h3>
                     <hr>
                     <div class="row form__steps-body">
-                        <label class="col s12" v-for="beneficio in beneficios">
+                        <label class="col s12" v-for="beneficio in beneficios" v-show=" idade != 'acima de 80 anos'  ">
+                            <input type="radio" class="with-gap" name="plano" v-model="beneficio_id" :value="beneficio.id" @change="set_beneficio">
+                            <span class="form__steps-beneficios">
+                                <b>{{beneficio.titulo}}</b>
+                                <a target="_blank" :href="beneficio.link" class="text-right">
+                                    <b> Confira o todos os beneficios </b>
+                                </a>
+                                <div>(R${{beneficio.valor_mensal}} ao mês)</div>
+                            </span>
+                        </label>
+                        
+                        <label class="col s12" v-for="beneficio in beneficios" v-show=" idade == 'acima de 80 anos' && [126, 125, 96].includes( beneficio.id )  ">
                             <input type="radio" class="with-gap" name="plano" v-model="beneficio_id" :value="beneficio.id" @change="set_beneficio">
                             <span class="form__steps-beneficios">
                                 <b>{{beneficio.titulo}}</b>
@@ -316,7 +327,7 @@ $beneficios = array_map(function ($beneficio) {
                         </div>
                         <div class="input-field col s12 m12 l4">
                             <div for="">Data de Nascimento *</div>
-                            <input type="date" v-model="nascimento" name="nascimento">
+                            <input type="text" v-model="nascimento" onkeypress="mascaraData(this)" name="nascimento">
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <div for="">Telefone *</div>

@@ -172,6 +172,7 @@ var app = new Vue({
                 urna_id: this.urna_id,
                 taxas: this.taxas,
                 seguros: this.seguros,
+                nascimento: this.nascimento
             }
             localStorage.setItem('simulador_tmp', JSON.stringify(payload))
         },
@@ -236,6 +237,7 @@ var app = new Vue({
                     total: this.total,
                     taxas: this.taxas,
                     seguros: this.seguros,
+                    nascimento: this?.nascimento?.split('/')?.reverse()?.join('-')
                 })
             })).json();
         },
@@ -315,7 +317,8 @@ var app = new Vue({
                 next,
                 message: 'Preencha todos os dados'
             }
-        }
+        },
+        
     },
     mounted() {
         this.planos = globalThis._planos
@@ -342,6 +345,7 @@ var app = new Vue({
             this.urna_id = backup.urna_id
             this.taxas = backup.taxas
             this.seguros = backup.seguros
+            this.nascimento = backup.nascimento
         }
     }
 })
