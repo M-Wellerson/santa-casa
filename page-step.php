@@ -327,7 +327,7 @@ $beneficios = array_map(function ($beneficio) {
                         </div>
                         <div class="input-field col s12 m12 l4">
                             <div for="">Data de Nascimento *</div>
-                            <input type="text" v-model="nascimento" onkeypress="mascaraData(this)" name="nascimento">
+                            <input type="text" v-model="nascimento" onkeypress="mascaraData(this)" name="nascimento" required>
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <div for="">Telefone *</div>
@@ -335,7 +335,7 @@ $beneficios = array_map(function ($beneficio) {
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <div for="">Celular *</div>
-                            <input type="text" v-model="celular" name="celular">
+                            <input type="text" v-model="celular" name="celular" required>
                         </div>
                     </div>
                 </div>
