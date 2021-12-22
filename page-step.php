@@ -270,8 +270,8 @@ $beneficios = array_map(function ($beneficio) {
                                 <input type="text" v-model="dep.nome" name="dep_nome[]" placeholder="Nome">
                             </div>
                             <div class="input-field col s6">
-                                <small>Dependente</small>
-                                <input type="text" v-model="dep.data" onkeypress="mascaraData(this)" @blur="render_taxas" name="dep_data[]">
+                                <small>Data de nascimento</small>
+                                <input type="text" v-model="dep.data" oninput="mascaraData(this)" @blur="render_taxas" name="dep_data[]">
                             </div>
                             <div class="input-field col s6">
                                 <small>Seguro do Dependente</small>
@@ -327,7 +327,7 @@ $beneficios = array_map(function ($beneficio) {
                         </div>
                         <div class="input-field col s12 m12 l4">
                             <div for="">Data de Nascimento *</div>
-                            <input type="text" v-model="nascimento" onkeypress="mascaraData(this)" name="nascimento" required>
+                            <input type="text" v-model="nascimento" oninput="mascaraData(this)" name="nascimento" required>
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <div for="">Telefone *</div>
