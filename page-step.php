@@ -271,7 +271,7 @@ $beneficios = array_map(function ($beneficio) {
                             </div>
                             <div class="input-field col s6">
                                 <small>Dependente</small>
-                                <input type="date" v-model="dep.data" @blur="render_taxas" name="dep_data[]">
+                                <input type="text" v-model="dep.data" onkeypress="mascaraData(this)" @blur="render_taxas" name="dep_data[]">
                             </div>
                             <div class="input-field col s6">
                                 <small>Seguro do Dependente</small>

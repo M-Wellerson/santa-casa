@@ -252,11 +252,15 @@ var app = new Vue({
         add_taxa_dependente() {
             this.taxas = this.dependentes.map(d => {
                 if (d.data) {
-                    let idade = this.get_idade(d.data)
+                    
+                    let idade = this.get_idade(this.adapterData(d.data))
                     return this.taxa_dependente(idade)
                 }
                 return "0,00"
             })
+        },
+        adapterData( data ) {
+            return data.split('/').reverse().join('-')
         },
         add_valor_seguro_dependente() {
             this.dependentes = this.dependentes.map(valor => {
