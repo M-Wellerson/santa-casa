@@ -211,7 +211,7 @@ $beneficios = array_map(function ($beneficio) {
                             </span>
                         </label>
                         
-                        <label class="col s12" v-for="beneficio in beneficios" v-show=" idade == 'acima de 80 anos' && [126, 125, 96].includes( beneficio.id )  ">
+                        <label class="col s12" v-for="beneficio in beneficios" v-show=" idade == 'acima de 80 anos' && [125].includes( beneficio.id )  ">
                             <input type="radio" class="with-gap" name="plano" v-model="beneficio_id" :value="beneficio.id" @change="set_beneficio">
                             <span class="form__steps-beneficios">
                                 <b>{{beneficio.titulo}}</b>
