@@ -28,7 +28,7 @@
                 <span class="font-30 box-ao-dia">ao dia</span>
             </div>
             <div class="banner-box-transition"></div>
-            <a href="<?= get_site_url() ?>/todos-os-planos" class="banner-link text-movel">Conheça nossos planos</a>
+            <a href="<?= get_site_url() ?>/planos" class="banner-link text-movel">Conheça nossos planos</a>
         </div>
     </div>
     <div class="azul-text banner-steps">
@@ -87,7 +87,7 @@
     <div class="inner-cards">
         <div class="swiper-container js-planos">
             <div class="swiper-wrapper cards">
-                <a class="swiper-slide" href="<?= get_template_directory_uri() ?>/plano">
+                <a class="swiper-slide" href="<?= get_site_url() ?>/simulador">
                     <img src="<?= get_template_directory_uri() ?>/assets/card/empresarial.jpg">
                     <span class="azul-text font-25 title-plans">Empresarial</span>
                     <div class="in_focus">
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                 </a>
-                <a class="swiper-slide" href="<?= get_template_directory_uri() ?>/plano">
+                <a class="swiper-slide" href="<?= get_site_url() ?>/simulador">
                     <img src="<?= get_template_directory_uri() ?>/assets/card/igreja.jpg">
                     <span class="azul-text font-25 title-plans">Igreja</span>
                     <div class="in_focus">
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                 </a>
-                <a class="swiper-slide" href="<?= get_template_directory_uri() ?>/plano">
+                <a class="swiper-slide" href="<?= get_site_url() ?>/simulador">
                     <img src="<?= get_template_directory_uri() ?>/assets/card/familiar.jpg">
                     <span class="azul-text font-25 title-plans">Familiar <br></span>
                     <div class="in_focus">
@@ -138,7 +138,7 @@
                         </div>
                     </div>
                 </a>
-                <a class="swiper-slide" href="<?= get_template_directory_uri() ?>/plano">
+                <a class="swiper-slide" href="<?= get_site_url() ?>/simulador">
                     <img src="<?= get_template_directory_uri() ?>/assets/card/pet.jpg">
                     <span class="azul-text font-25 title-plans">Pet</span>
                     <div class="in_focus">

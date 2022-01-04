@@ -26,7 +26,7 @@ Template Name: Planos
                             <strong class="font-45 ">R$ 18,00</strong>
                             <span class="gray-text font-18">ao mês</span> <br>
                         </div>
-                        <a href="<?= get_site_url() ?>/plano" class="link--home link-planos"> Saiba mais </a>
+                        <a href="<?= get_site_url() ?>/simulador" class="link--home link-planos">Simulador de Planos</a>
                     </span>
                 </div>
             </div>
@@ -42,7 +42,7 @@ Template Name: Planos
                             <strong class="font-45 ">R$28,00</strong>
                             <span class="gray-text font-18">ao mês</span> <br>
                         </div>
-                        <a href="<?= get_site_url() ?>/plano" class="link--home link-planos"> Saiba mais </a>
+                        <a href="<?= get_site_url() ?>/simulador" class="link--home link-planos">Simulador de Planos</a>
                     </span>
                 </div>
             </div>
@@ -58,7 +58,7 @@ Template Name: Planos
                             <strong class="font-45 ">R$51,00</strong>
                             <span class="gray-text font-18">ao mês</span> <br>
                         </div>
-                        <a href="<?= get_site_url() ?>/plano" class="link--home link-planos"> Saiba mais </a>
+                        <a href="<?= get_site_url() ?>/simulador" class="link--home link-planos">Simulador de Planos</a>
                     </span>
                 </div>
             </div>
@@ -74,7 +74,7 @@ Template Name: Planos
                             <strong class="font-45 ">R$266</strong>
                             <span class="gray-text font-18">ao mês</span> <br>
                         </div>
-                        <a href="<?= get_site_url() ?>/plano" class="link--home link-planos"> Saiba mais </a>
+                        <a href="<?= get_site_url() ?>/simulador" class="link--home link-planos">Simulador de Planos</a>
                     </span>
                 </div>
             </div>
@@ -90,7 +90,7 @@ Template Name: Planos
                             <strong class="font-45 ">R$281,00</strong>
                             <span class="gray-text font-18">ao mês</span> <br>
                         </div>
-                        <a href="<?= get_site_url() ?>/plano" class="link--home link-planos"> Saiba mais </a>
+                        <a href="<?= get_site_url() ?>/simulador" class="link--home link-planos">Simulador de Planos</a>
                     </span>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Template Name: Planos
                             <strong class="font-45 ">R$331,00</strong>
                             <span class="gray-text font-18">ao mês</span> <br>
                         </div>
-                        <a href="<?= get_site_url() ?>/plano" class="link--home link-planos"> Saiba mais </a>
+                        <a href="<?= get_site_url() ?>/simulador" class="link--home link-planos">Simulador de Planos</a>
                     </span>
                 </div>
             </div>
@@ -122,7 +122,7 @@ Template Name: Planos
                             <strong class="font-45 ">R$5,00</strong>
                             <span class="gray-text font-18">ao mês</span> <br>
                         </div>
-                        <a href="<?= get_site_url() ?>/plano" class="link--home link-planos"> Saiba mais </a>
+                        <a href="<?= get_site_url() ?>/simulador" class="link--home link-planos">Simulador de Planos</a>
                     </span>
                 </div>
             </div>
@@ -138,7 +138,7 @@ Template Name: Planos
                             <strong class="font-45 ">R$3,00</strong>
                             <span class="gray-text font-18">ao mês</span> <br>
                         </div>
-                        <a href="<?= get_site_url() ?>/plano" class="link--home link-planos"> Saiba mais </a>
+                        <a href="<?= get_site_url() ?>/simulador" class="link--home link-planos">Simulador de Planos</a>
                     </span>
                 </div>
             </div>
@@ -154,7 +154,7 @@ Template Name: Planos
                             <strong class="font-45 ">R$7,00</strong>
                             <span class="gray-text font-18">ao mês</span> <br>
                         </div>
-                        <a href="<?= get_site_url() ?>/plano" class="link--home link-planos"> Saiba mais </a>
+                        <a href="<?= get_site_url() ?>/simulador" class="link--home link-planos">Simulador de Planos</a>
                     </span>
                 </div>
             </div>

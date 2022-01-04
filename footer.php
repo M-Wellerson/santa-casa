@@ -14,7 +14,7 @@
                         <a href="tel:21964853339">(21) 96485-3339</a> /
                         <a href="tel:21967205554">(21) 96720-5554</a> <br>
                         <a href="tel:21964656800">(21) 96465-6800</a> <br>
-                        <a href="mailto:cantato@santacasacopacabana.com.br">cantato@santacasacopacabana.com.br</a>
+                        <a href="mailto:contato@santacasacopacabana.com.br">contato@santacasacopacabana.com.br</a>
                     </div>
 
                     <h3 class="font-25">Cartões aceitos</h3>

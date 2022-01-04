@@ -1953,3 +1953,8 @@ strong {
 .event-none {
     pointer-events: none;
 }
+
+.margin-top-1rem {
+    display: block;
+    margin-top: 1rem;
+}
