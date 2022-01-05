@@ -34,25 +34,25 @@ Template Name: Clube de Vantagens
                         Conheça todas as vantagens acessando diretamente á pagina do clube de vantagens ALM 
                     </p>
                     <div class="space large-hide" style="--line: 25px"></div>
-                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/clubedevantagens.pdf" target="_blank" rel="noopener noreferrer">
+                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="https://vantagensdesercopacabana.com.br" target="_blank" rel="noopener noreferrer">
                         Vantagens de ser Copacabana
                     </a>
-                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/medicamentos.pdf" target="_blank" rel="noopener noreferrer">
+                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/Desconto_em_Medicamentos_SANTA_CASA_COPACABANA.pdf" target="_blank" rel="noopener noreferrer">
                         Farmácias e Medicamentos
                     </a>
-                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/seguro-sccopa.pdf" target="_blank" rel="noopener noreferrer">
+                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/Manual_Santa_Casa_Copa.pdf" target="_blank" rel="noopener noreferrer">
                         Manual de Utilização
                     </a>
-                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/apoio-emocional.pdf" target="_blank" rel="noopener noreferrer">
+                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/Apoio_Emocional_SANTA_CASA_COPACABANA.pdf" target="_blank" rel="noopener noreferrer">
                         Condições Gerais Apoio Emocional
                     </a>
-                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/cesta-basica.pdf" target="_blank" rel="noopener noreferrer">
+                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/Assistência_Alimentação_SANTA_CASA_COPACABANA.pdf" target="_blank" rel="noopener noreferrer">
                         Condições Gerais Assistência Alimentação
                     </a>
-                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/inventario-extrajudicial.pdf" target="_blank" rel="noopener noreferrer">
+                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/Clube_Vantagens_SANTA_CASA_COPACABANA.pdf" target="_blank" rel="noopener noreferrer">
                         Condições Gerais Clube de Vantagens
                     </a>
-                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/consultas-exames.pdf" target="_blank" rel="noopener noreferrer">
+                    <a class="link--home link-funeral link-clube link-funeral-single margin-top-1rem" href="<?= get_template_directory_uri() ?>/assets/pdf/Cond_Espe_Consultas_Exames_Odonto_SANTA_CASA_COPACABANA.pdf" target="_blank" rel="noopener noreferrer">
                         C. Gerais Consultas e Tratamento Odontológicos
                     </a>
                     <div class="space"></div>
