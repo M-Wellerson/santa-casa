@@ -63,7 +63,7 @@ $beneficios = array_map(function ($beneficio) {
         </div>
     </div>
 
-    <form action="javascript:void(0)" ref="form_cadastro">
+    <form action="javascript:void(0)" @submit="finalizar('step_6')" ref="form_cadastro">
 
         <div class="box_step" v-show="step==1">
             <div class="row">
@@ -350,7 +350,7 @@ $beneficios = array_map(function ($beneficio) {
                         <div class="box_flex_s"> <strong></strong> <span></span> </div>
                         <i class="message-taxa">{{mensagem}}</i>
                     </div>
-                    <button class="btn btn-contrate btn-contrate-active" @click="finalizar('step_6')"> contrate esse plano</button>
+                    <button class="btn btn-contrate btn-contrate-active" > contrate esse plano </button>
                     <span class="error-step" v-show="error != null">
                         {{error}}
                     </span>
