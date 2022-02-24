@@ -204,7 +204,7 @@ $beneficios = array_map(function ($beneficio) {
                             <span class="form__steps-beneficios">
                                 <b>{{beneficio.titulo}}</b>
                                 <a target="_blank" :href="beneficio.link" class="text-right">
-                                    <b v-show=" beneficio.id != '128' "> Confira o todos os beneficios</b>
+                                    <b v-show=" beneficio.id != '128' ">Confira todos os benefícios</b>
                                 </a>
                                 <div>(R${{beneficio.valor_mensal}} ao mês)</div>
                             </span>
@@ -215,7 +215,7 @@ $beneficios = array_map(function ($beneficio) {
                             <span class="form__steps-beneficios">
                                 <b>{{beneficio.titulo}}</b>
                                 <a target="_blank" :href="beneficio.link" class="text-right">
-                                    <b v-show=" beneficio.id != '128' "> Confira o todos os beneficios </b>
+                                    <b v-show=" beneficio.id != '128' ">Confira todos os benefícios</b>
                                 </a>
                                 <div>(R${{beneficio.valor_mensal}} ao mês)</div>
                             </span>
