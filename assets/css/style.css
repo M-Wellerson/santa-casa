@@ -454,7 +454,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     height: 70vh;
     text-transform: uppercase;
-    z-index: 999;
+    z-index: 98;
 }
 
 @media (max-width:800px) {
@@ -813,7 +813,7 @@ a.swiper-slide-active .title-plans {
     position: absolute;
     bottom: 120px;
     left: calc( 35vw - 32px);
-    z-index: 999;
+    z-index: 98;
     cursor: pointer;
 }
 
@@ -824,7 +824,7 @@ a.swiper-slide-active .title-plans {
     bottom: 120px;
     right: calc( 35vw - 32px);
     transform: rotate(180deg);
-    z-index: 999;
+    z-index: 98;
     cursor: pointer;
 }
 
