@@ -1128,6 +1128,11 @@ footer h3 {
     height: 48px;
     z-index: 99;
 }
+.logo-mobile img {
+    width: 100px;
+    margin-top: 60px;
+    margin-left: 35px;
+}
 
 .list-seguros>span {
     display: grid;
