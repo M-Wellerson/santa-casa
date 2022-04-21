@@ -129,8 +129,8 @@ var app = new Vue({
             let beneficio_price = parseInt(this.beneficio_price.replace(/\D/, ''))
             let soma = plano_price + beneficio_price
             this.total = this.to_money(soma)
-            if (soma < 6000) {
-                this.mensagem = 'No primeiro mês, pague somente a taxa de adesão no valor de R$ 60,00'
+            if (soma < 7000) {
+                this.mensagem = 'No primeiro mês, pague somente a taxa de adesão no valor de R$ 70,00'
             } else {
                 this.mensagem = ''
             }

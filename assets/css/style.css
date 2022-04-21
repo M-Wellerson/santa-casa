@@ -874,7 +874,7 @@ a.swiper-slide-active .title-plans {
     z-index: 999;
 }
 
-@media (max-width:7000px) {
+@media (max-width:800px) {
     .menu {
         display: block;
         width: 48px;
@@ -903,7 +903,7 @@ a.swiper-slide-active .title-plans {
         height: 100vh;
         padding: 20px 50px;
         border-radius: 0px;
-        padding-top: 70px;
+        padding-top: 150px;
     }
     .menu-pop ul ul {
         display: none;
